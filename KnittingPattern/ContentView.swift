@@ -8,75 +8,76 @@
 import SwiftUI
 import SwiftData
 
+/// Навигация приложения: вкладки, стек библиотеки и окно создания схемы.
+@Observable
+final class AppRouter {
+    enum Tab: Hashable { case patterns, create, legend, profile }
+
+    var selectedTab: Tab = .patterns
+    var libraryPath = NavigationPath()
+    var isCreating = false
+
+    func open(_ pattern: Pattern) {
+        selectedTab = .patterns
+        libraryPath = NavigationPath()
+        libraryPath.append(pattern)
+    }
+}
+
 struct ContentView: View {
-    @Environment(\.modelContext) private var modelContext
-    @Query private var items: [Item]
+    @State private var router = AppRouter()
 
     var body: some View {
-        NavigationViewWrapper {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
-                    } label: {
-                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
-                    }
-                }
-                .onDelete(perform: deleteItems)
-            }
-#if os(macOS)
-            .navigationSplitViewColumnWidth(min: 180, ideal: 200)
-#endif
-            .toolbar {
-#if os(iOS)
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-#endif
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
+        // Вкладка «Создать» не переключает экран, а открывает мастер создания.
+        let tabSelection = Binding<AppRouter.Tab>(
+            get: { router.selectedTab },
+            set: { tab in
+                if tab == .create {
+                    router.isCreating = true
+                } else {
+                    router.selectedTab = tab
                 }
             }
-        }
-    }
+        )
 
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(timestamp: Date())
-            modelContext.insert(newItem)
+        TabView(selection: tabSelection) {
+            SwiftUI.Tab("Charts", systemImage: "house", value: AppRouter.Tab.patterns) {
+                NavigationStack(path: $router.libraryPath) {
+                    LibraryView()
+                        .navigationDestination(for: Pattern.self) { pattern in
+                            EditorView(pattern: pattern)
+                        }
+                }
+            }
+            SwiftUI.Tab("Create", systemImage: "plus.square", value: AppRouter.Tab.create) {
+                Color.clear
+            }
+            SwiftUI.Tab("Symbols", systemImage: "book.closed", value: AppRouter.Tab.legend) {
+                NavigationStack { LegendView() }
+            }
+            SwiftUI.Tab("Profile", systemImage: "person", value: AppRouter.Tab.profile) {
+                NavigationStack { ProfileView() }
+            }
         }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            for index in offsets {
-                modelContext.delete(items[index])
+        .tint(Color.accentDark)
+        .environment(router)
+        .sheet(isPresented: $router.isCreating) {
+            CreatePatternFlow { pattern in
+                router.isCreating = false
+                router.open(pattern)
             }
         }
     }
 }
 
-fileprivate struct NavigationViewWrapper<Content: View>: View {
-    let content: () -> Content
-
-    var body: some View {
-#if os(macOS)
-        NavigationSplitView {
-            content()
-        } detail: {
-            Text("Select an item")
-        }
-#else
-        NavigationStack {
-            content()
-        }
-#endif
-    }
-}
-
-#Preview {
+#if DEBUG
+#Preview("Со схемами") {
     ContentView()
-        .modelContainer(for: Item.self, inMemory: true)
+        .modelContainer(SampleData.previewContainer)
 }
+
+#Preview("Пустая библиотека") {
+    ContentView()
+        .modelContainer(for: Pattern.self, inMemory: true)
+}
+#endif
