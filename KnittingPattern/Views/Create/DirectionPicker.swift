@@ -34,11 +34,9 @@ struct DirectionPicker<Value: Hashable>: View {
 #if DEBUG
 #Preview("Выбор направления") {
     @Previewable @State var direction = RowDirection.bottomToTop
-    DirectionPicker(
-        title: "Row numbering",
-        selection: $direction,
-        options: [(.bottomToTop, "arrow.up", "Bottom to top"), (.topToBottom, "arrow.down", "Top to bottom")]
-    )
+    DirectionPicker(title: "Row numbering",
+                    selection: $direction,
+                    options: [(.bottomToTop, "arrow.up", "Bottom to top"), (.topToBottom, "arrow.down", "Top to bottom")])
     .padding()
     .background(Color.background)
 }

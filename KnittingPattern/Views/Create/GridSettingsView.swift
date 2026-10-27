@@ -89,14 +89,13 @@ struct GridSettingsView: View {
             .padding(20)
         }
         .background(Color.background)
-        .safeAreaInset(edge: .bottom) {
+        .stickyFooter {
             Button("Create") {
                 let pattern = draft.makePattern()
                 modelContext.insert(pattern)
                 onCreate(pattern)
             }
             .buttonStyle(PrimaryButtonStyle())
-            .bottomActionBar()
         }
         .inlineNavigationTitle("Grid Settings")
     }
