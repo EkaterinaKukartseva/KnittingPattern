@@ -10,6 +10,7 @@ import SwiftUI
 /// Условное обозначение петли. Рисуется векторно в единичном квадрате,
 /// поэтому одинаково чётко выглядит в сетке, палитре и при экспорте.
 struct Stitch: Identifiable, Hashable {
+    
     enum Style { case stroke, fill, fillCell }
 
     let id: StitchID
@@ -271,7 +272,7 @@ struct StitchGlyph: View {
 }
 
 #if DEBUG
-#Preview("Все символы") {
+#Preview("All Symbols") {
     ScrollView {
         LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 6), spacing: 12) {
             ForEach(Stitch.crochet + Stitch.knitting) { stitch in

@@ -1,9 +1,6 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "" : {
-      "shouldTranslate" : false
-    },
     "%@ (copy)" : {
       "localizations" : {
         "ru" : {
@@ -147,9 +144,6 @@
           }
         }
       }
-    },
-    "%lld" : {
-      "shouldTranslate" : false
     },
     "A photo of a chart becomes the background layer" : {
       "localizations" : {
@@ -337,36 +331,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Фон клетки"
-          }
-        }
-      }
-    },
-    "Cell shape" : {
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Форма ячеек"
-          }
-        }
-      }
-    },
-    "Cell size" : {
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Размер ячеек"
-          }
-        }
-      }
-    },
-    "Cells" : {
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ячейки"
           }
         }
       }
@@ -901,16 +865,6 @@
         }
       }
     },
-    "Large" : {
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Крупные"
-          }
-        }
-      }
-    },
     "Left" : {
       "localizations" : {
         "ru" : {
@@ -967,16 +921,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Кольцо амигуруми"
-          }
-        }
-      }
-    },
-    "Medium" : {
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Средние"
           }
         }
       }
@@ -1161,16 +1105,6 @@
         }
       }
     },
-    "Rectangle" : {
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Прямоугольник"
-          }
-        }
-      }
-    },
     "Redo" : {
       "localizations" : {
         "ru" : {
@@ -1331,16 +1265,6 @@
         }
       }
     },
-    "Shape" : {
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Форма"
-          }
-        }
-      }
-    },
     "Share Chart" : {
       "localizations" : {
         "ru" : {
@@ -1437,26 +1361,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Снятая петля"
-          }
-        }
-      }
-    },
-    "Small" : {
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Маленькие"
-          }
-        }
-      }
-    },
-    "Square" : {
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Квадрат"
           }
         }
       }
@@ -1617,6 +1521,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "V-петля"
+          }
+        }
+      }
+    },
+    "Version" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Версия"
           }
         }
       }

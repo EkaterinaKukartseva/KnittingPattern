@@ -53,7 +53,7 @@ struct PatternExportView: View {
 }
 
 #if DEBUG
-#Preview("Экспорт в PNG") {
+#Preview("PNG Export") {
     ScrollView([.horizontal, .vertical]) {
         PatternExportView(pattern: SampleData.heart(), usedStitches: [Stitch.crochet[2]])
     }

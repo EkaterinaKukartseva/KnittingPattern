@@ -38,7 +38,7 @@ extension View {
 }
 
 #if DEBUG
-#Preview("Над прокруткой") {
+#Preview("Over Scroll View") {
     NavigationStack {
         List(1...30, id: \.self) { index in
             Text(verbatim: "Row \(index)")
@@ -52,7 +52,7 @@ extension View {
     }
 }
 
-#Preview("Отдельно") {
+#Preview("Standalone") {
     VStack {
         Spacer()
         StickyFooter {

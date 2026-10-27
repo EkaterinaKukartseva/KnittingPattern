@@ -28,32 +28,6 @@ struct GridSettingsView: View {
                     NumberStepperRow(title: "Height (row count)", value: $draft.rows)
                 }
 
-                section("Cell size") {
-                    HStack(spacing: 10) {
-                        ForEach(CellSize.allCases) { size in
-                            SelectableCard(isSelected: draft.cellSize == size, action: { draft.cellSize = size }) {
-                                RoundedRectangle(cornerRadius: 2)
-                                    .strokeBorder(.ink.opacity(0.6), lineWidth: 1)
-                                    .frame(width: size.points * 0.7, height: size.points * 0.7)
-                            }
-                            .frame(height: 60)
-                        }
-                    }
-                }
-
-                section("Cell shape") {
-                    HStack(spacing: 10) {
-                        ForEach(CellShape.allCases) { shape in
-                            SelectableCard(isSelected: draft.cellShape == shape, action: { draft.cellShape = shape }) {
-                                RoundedRectangle(cornerRadius: 2)
-                                    .strokeBorder(.ink.opacity(0.6), lineWidth: 1)
-                                    .frame(width: shape == .square ? 18 : 30, height: 18)
-                            }
-                            .frame(height: 50)
-                        }
-                    }
-                }
-
                 VStack(spacing: 14) {
                     Toggle("Column numbers", isOn: $draft.showColumnNumbers)
                     Toggle("Row numbers", isOn: $draft.showRowNumbers)
@@ -99,17 +73,10 @@ struct GridSettingsView: View {
         }
         .inlineNavigationTitle("Grid Settings")
     }
-
-    private func section(_ title: LocalizedStringKey, @ViewBuilder content: () -> some View) -> some View {
-        VStack(alignment: .leading, spacing: 10) {
-            Text(title).font(.subheadline.weight(.semibold)).foregroundStyle(.ink)
-            content()
-        }
-    }
 }
 
 #if DEBUG
-#Preview("Настройки сетки") {
+#Preview("Grid Settings") {
     NavigationStack {
         GridSettingsView(draft: PatternDraft()) { _ in }
     }

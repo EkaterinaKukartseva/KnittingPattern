@@ -120,14 +120,14 @@ struct CreatePatternView: View {
 }
 
 #if DEBUG
-#Preview("Источник и тип вязания") {
+#Preview("Source and Craft") {
     NavigationStack {
         CreatePatternView(draft: PatternDraft()) { _ in }
     }
     .modelContainer(for: Pattern.self, inMemory: true)
 }
 
-#Preview("Выбраны спицы") {
+#Preview("Knitting Selected") {
     let draft = PatternDraft()
     draft.craft = .knitting
     return NavigationStack {

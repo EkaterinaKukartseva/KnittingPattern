@@ -13,7 +13,7 @@ struct StitchTests {
 
     @Test func everyStitchIDHasSymbol() {
         for id in StitchID.allCases {
-            #expect(Stitch.with(id: id) != nil, "Нет значка для \(id)")
+            #expect(Stitch.with(id: id) != nil, "No symbol for \(id)")
         }
     }
 

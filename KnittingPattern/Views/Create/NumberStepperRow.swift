@@ -24,7 +24,8 @@ struct NumberStepperRow: View {
             Spacer()
             HStack(spacing: 0) {
                 stepButton("minus") { setValue(value - 1) }
-                TextField("", text: $text)
+                TextField(text: $text) { EmptyView() }
+                    .accessibilityLabel(title)
                     .multilineTextAlignment(.center)
                     .frame(width: 44)
                     .focused($isFocused)
@@ -91,7 +92,7 @@ struct NumberStepperRow: View {
 }
 
 #if DEBUG
-#Preview("Поле числа") {
+#Preview("Number Field") {
     @Previewable @State var value = 20
     NumberStepperRow(title: "Width (stitch count)", value: $value)
         .padding()

@@ -185,7 +185,7 @@ struct LibraryView: View {
 }
 
 #if DEBUG
-#Preview("Библиотека") {
+#Preview("Library") {
     NavigationStack {
         LibraryView()
     }
@@ -193,7 +193,7 @@ struct LibraryView: View {
     .modelContainer(SampleData.previewContainer)
 }
 
-#Preview("Библиотека — пусто") {
+#Preview("Library — Empty") {
     NavigationStack {
         LibraryView()
     }

@@ -8,10 +8,11 @@
 import SwiftUI
 
 /// Базовая палитра редактора. Каждый цвет — из Assets, со своим вариантом для тёмной темы.
-enum PaletteColor: String, CaseIterable, Codable {
+nonisolated enum PaletteColor: String, CaseIterable, Codable {
+    
     case ink, gray, blue, pink, green, beige
 
-    var color: Color {
+    @MainActor var color: Color {
         switch self {
         case .ink: .ink
         case .gray: .paletteGray
@@ -25,13 +26,14 @@ enum PaletteColor: String, CaseIterable, Codable {
 
 /// Цвет символа или фона клетки: цвет палитры (по имени из Assets)
 /// или свой цвет — выбранный пользователем или взятый с фото.
-enum CellColor: Hashable, Codable {
+nonisolated enum CellColor: Hashable, Codable {
+    
     case palette(PaletteColor)
     case custom(Color.Resolved)
 
     static let `default` = CellColor.palette(.ink)
 
-    var color: Color {
+    @MainActor var color: Color {
         switch self {
         case .palette(let palette): palette.color
         case .custom(let resolved): Color(resolved)
@@ -47,7 +49,7 @@ enum CellColor: Hashable, Codable {
         } else {
             let rgb = try container.decode([Float].self)
             guard rgb.count == 3 else {
-                throw DecodingError.dataCorruptedError(in: container, debugDescription: "Ожидалось 3 компонента цвета")
+                throw DecodingError.dataCorruptedError(in: container, debugDescription: "Expected 3 color components")
             }
             self = .custom(Color.Resolved(red: rgb[0], green: rgb[1], blue: rgb[2]))
         }

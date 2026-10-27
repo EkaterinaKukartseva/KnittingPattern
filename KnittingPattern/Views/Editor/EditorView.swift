@@ -367,14 +367,14 @@ struct EditorView: View {
 }
 
 #if DEBUG
-#Preview("Редактор — крючок") {
+#Preview("Editor — Crochet") {
     NavigationStack {
         EditorView(pattern: SampleData.previewPattern)
     }
     .modelContainer(SampleData.previewContainer)
 }
 
-#Preview("Редактор — спицы") {
+#Preview("Editor — Knitting") {
     NavigationStack {
         EditorView(pattern: SampleData.knitStripes())
     }

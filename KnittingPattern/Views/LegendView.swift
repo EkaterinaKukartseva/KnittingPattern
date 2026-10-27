@@ -41,7 +41,7 @@ struct LegendView: View {
 }
 
 #if DEBUG
-#Preview("Обозначения") {
+#Preview("Legend") {
     NavigationStack { LegendView() }
 }
 #endif

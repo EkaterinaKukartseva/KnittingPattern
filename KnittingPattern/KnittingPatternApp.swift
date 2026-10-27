@@ -14,13 +14,15 @@ struct KnittingPatternApp: App {
     @AppStorage(AppTheme.storageKey) private var theme: AppTheme = .system
 
     var sharedModelContainer: ModelContainer = {
-        let schema = Schema([
-            Pattern.self,
-        ])
+        let schema = Schema(versionedSchema: CurrentSchema.self)
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
         do {
-            let container = try ModelContainer(for: schema, configurations: [modelConfiguration])
+            let container = try ModelContainer(
+                for: schema,
+                migrationPlan: PatternMigrationPlan.self,
+                configurations: [modelConfiguration]
+            )
             #if DEBUG
             SampleData.seedIfRequested(in: container.mainContext)
             #endif

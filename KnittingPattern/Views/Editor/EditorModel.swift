@@ -335,8 +335,6 @@ final class EditorModel {
             save()
         }
         settings = newSettings
-        pattern.cellSize = newSettings.cellSize
-        pattern.cellShape = newSettings.cellShape
         pattern.showColumnNumbers = newSettings.showColumnNumbers
         pattern.showRowNumbers = newSettings.showRowNumbers
         pattern.rowDirection = newSettings.rowDirection

@@ -9,16 +9,18 @@ import SwiftUI
 
 /// Геометрия сетки: где клетки, где нумерация, какая клетка под пальцем.
 struct ChartLayout {
+
+    /// Сторона квадратной клетки при масштабе 1. Размер на экране задаёт только зум редактора.
+    static let cellPoints: CGFloat = 24
+
     let settings: GridSettings
-    let cellWidth: CGFloat
-    let cellHeight: CGFloat
+    let cellSide: CGFloat
     let leftMargin: CGFloat
     let bottomMargin: CGFloat
 
     init(settings: GridSettings, zoom: CGFloat = 1, showNumbers: Bool = true) {
         self.settings = settings
-        cellWidth = settings.cellSize.points * zoom
-        cellHeight = cellWidth * settings.cellShape.heightRatio
+        cellSide = Self.cellPoints * zoom
         let numberSpace = max(16, 9 * zoom + 8)
         leftMargin = showNumbers && settings.showRowNumbers ? numberSpace : 0
         bottomMargin = showNumbers && settings.showColumnNumbers ? numberSpace : 0
@@ -27,8 +29,8 @@ struct ChartLayout {
     var gridRect: CGRect {
         CGRect(
             x: leftMargin, y: 0,
-            width: CGFloat(settings.columns) * cellWidth,
-            height: CGFloat(settings.rows) * cellHeight
+            width: CGFloat(settings.columns) * cellSide,
+            height: CGFloat(settings.rows) * cellSide
         )
     }
 
@@ -38,16 +40,16 @@ struct ChartLayout {
 
     func rect(column: Int, row: Int) -> CGRect {
         CGRect(
-            x: leftMargin + CGFloat(column) * cellWidth,
-            y: CGFloat(row) * cellHeight,
-            width: cellWidth, height: cellHeight
+            x: leftMargin + CGFloat(column) * cellSide,
+            y: CGFloat(row) * cellSide,
+            width: cellSide, height: cellSide
         )
     }
 
     /// Клетка под точкой; `clamped` прижимает точку к краю сетки (для протяжки).
     func cell(at point: CGPoint, clamped: Bool = false) -> GridPoint? {
-        let column = Int(floor((point.x - leftMargin) / cellWidth))
-        let row = Int(floor(point.y / cellHeight))
+        let column = Int(floor((point.x - leftMargin) / cellSide))
+        let row = Int(floor(point.y / cellSide))
         if clamped {
             return GridPoint(
                 column: min(max(column, 0), settings.columns - 1),
@@ -123,7 +125,7 @@ enum ChartRenderer {
         var thin = Path()
         var bold = Path()
         for column in 0...settings.columns {
-            let x = grid.minX + CGFloat(column) * layout.cellWidth
+            let x = grid.minX + CGFloat(column) * layout.cellSide
             let number = settings.columnDirection == .leftToRight ? column : settings.columns - column
             var line = Path()
             line.move(to: CGPoint(x: x, y: grid.minY))
@@ -131,7 +133,7 @@ enum ChartRenderer {
             if number % 10 == 0 { bold.addPath(line) } else { thin.addPath(line) }
         }
         for row in 0...settings.rows {
-            let y = grid.minY + CGFloat(row) * layout.cellHeight
+            let y = grid.minY + CGFloat(row) * layout.cellSide
             let number = settings.rowDirection == .topToBottom ? row : settings.rows - row
             var line = Path()
             line.move(to: CGPoint(x: grid.minX, y: y))
@@ -155,11 +157,11 @@ enum ChartRenderer {
         }
 
         guard showNumbers else { return }
-        let fontSize = min(11, max(7, layout.cellHeight * 0.42))
+        let fontSize = min(11, max(7, layout.cellSide * 0.42))
         if settings.showRowNumbers {
             for row in 0..<settings.rows {
                 let rect = layout.rect(column: 0, row: row)
-                let text = Text("\(settings.rowNumber(forRow: row))")
+                let text = Text(verbatim: "\(settings.rowNumber(forRow: row))")
                     .font(.system(size: fontSize, weight: .medium).monospacedDigit())
                     .foregroundStyle(Color.secondaryText)
                 context.draw(text, at: CGPoint(x: layout.leftMargin - 4, y: rect.midY), anchor: .trailing)
@@ -168,8 +170,8 @@ enum ChartRenderer {
         if settings.showColumnNumbers {
             for column in 0..<settings.columns {
                 let rect = layout.rect(column: column, row: settings.rows - 1)
-                let text = Text("\(settings.columnNumber(forColumn: column))")
-                    .font(.system(size: min(fontSize, layout.cellWidth * 0.45), weight: .medium).monospacedDigit())
+                let text = Text(verbatim: "\(settings.columnNumber(forColumn: column))")
+                    .font(.system(size: min(fontSize, layout.cellSide * 0.45), weight: .medium).monospacedDigit())
                     .foregroundStyle(Color.secondaryText)
                 context.draw(text, at: CGPoint(x: rect.midX, y: rect.maxY + 4), anchor: .top)
             }
@@ -199,7 +201,7 @@ struct ChartView: View {
 }
 
 #if DEBUG
-#Preview("Сетка") {
+#Preview("Grid") {
     let pattern = SampleData.heart()
     ScrollView([.horizontal, .vertical]) {
         ChartView(settings: pattern.gridSettings, cells: pattern.cells)

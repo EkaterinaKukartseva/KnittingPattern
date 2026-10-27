@@ -126,7 +126,7 @@ struct PatternInfoView: View {
 }
 
 #if DEBUG
-#Preview("О схеме") {
+#Preview("About Chart") {
     PatternInfoView(pattern: SampleData.previewPattern, usedStitches: [Stitch.crochet[2]])
         .modelContainer(SampleData.previewContainer)
 }

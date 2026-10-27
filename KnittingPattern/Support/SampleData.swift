@@ -21,7 +21,7 @@ enum SampleData {
             for pattern in samples() { container.mainContext.insert(pattern) }
             return container
         } catch {
-            fatalError("Не удалось создать хранилище для превью: \(error)")
+            fatalError("Could not create the preview container: \(error)")
         }
     }()
 
@@ -32,9 +32,9 @@ enum SampleData {
     }
 
     static func samples() -> [Pattern] {
-        let favorite = heart(name: "Сердечко (избранное)")
+        let favorite = heart(name: "Little Heart (favorite)")
         favorite.isFavorite = true
-        favorite.notes = "Остановилась на 12 ряду"
+        favorite.notes = "Stopped at row 12"
         return [heart(), knitStripes(), favorite]
     }
 
@@ -45,7 +45,7 @@ enum SampleData {
         for pattern in samples() { context.insert(pattern) }
     }
 
-    static func heart(name: String = "Сердце") -> Pattern {
+    static func heart(name: String = "Heart") -> Pattern {
         let rows = [
             "..XX...XX..",
             ".XXXX.XXXX.",
@@ -66,7 +66,7 @@ enum SampleData {
             }
         }
         let pattern = Pattern(name: name, craft: .crochet, columns: columns, rows: height, cells: cells)
-        pattern.summary = "Хлопок 50 г, крючок 3 мм"
+        pattern.summary = "Cotton 50 g, 3 mm hook"
         return pattern
     }
 
@@ -76,8 +76,8 @@ enum SampleData {
             let row = index / columns
             return Cell(symbol: row % 4 < 2 ? .knit : .purl, background: row % 8 < 4 ? nil : .palette(.green))
         }
-        return Pattern(name: "Резинка в полоску", craft: .knitting, columns: columns, rows: rows,
-                       cellShape: .wide, cells: cells)
+        return Pattern(name: "Striped Rib", craft: .knitting, columns: columns, rows: rows,
+                       cells: cells)
     }
 }
 #endif

@@ -32,7 +32,7 @@ struct DirectionPicker<Value: Hashable>: View {
 }
 
 #if DEBUG
-#Preview("Выбор направления") {
+#Preview("Direction Picker") {
     @Previewable @State var direction = RowDirection.bottomToTop
     DirectionPicker(title: "Row numbering",
                     selection: $direction,

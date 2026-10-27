@@ -62,7 +62,7 @@ extension View {
 }
 
 #if DEBUG
-#Preview("Карточки и кнопка") {
+#Preview("Cards and Button") {
     @Previewable @State var selected = 0
     VStack(spacing: 16) {
         HStack(spacing: 12) {

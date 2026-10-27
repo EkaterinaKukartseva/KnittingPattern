@@ -31,9 +31,13 @@ struct ProfileView: View {
                 statRow("Favorites", patterns.filter(\.isFavorite).count, icon: "heart")
             }
             Section {
+                LabeledContent {
+                    Text(verbatim: appVersion).monospacedDigit()
+                } label: {
+                    Label("Version", systemImage: "info.circle").foregroundStyle(Color.ink)
+                }
+            } footer: {
                 Text("Charts are stored on this device and saved automatically after every change.")
-                    .font(.footnote)
-                    .foregroundStyle(Color.secondaryText)
             }
         }
         .scrollContentBackground(.hidden)
@@ -41,17 +45,25 @@ struct ProfileView: View {
         .navigationTitle("Profile")
     }
 
+    /// «1.0 (1)» — версия из App Store и номер сборки.
+    private var appVersion: String {
+        let info = Bundle.main.infoDictionary
+        let version = info?["CFBundleShortVersionString"] as? String ?? "—"
+        let build = info?["CFBundleVersion"] as? String ?? "—"
+        return "\(version) (\(build))"
+    }
+
     private func statRow(_ title: LocalizedStringKey, _ value: Int, icon: String) -> some View {
         HStack {
             Label(title, systemImage: icon).foregroundStyle(Color.ink)
             Spacer()
-            Text("\(value)").foregroundStyle(Color.secondaryText).monospacedDigit()
+            Text(verbatim: "\(value)").foregroundStyle(Color.secondaryText).monospacedDigit()
         }
     }
 }
 
 #if DEBUG
-#Preview("Профиль") {
+#Preview("Profile") {
     NavigationStack { ProfileView() }
         .modelContainer(SampleData.previewContainer)
 }

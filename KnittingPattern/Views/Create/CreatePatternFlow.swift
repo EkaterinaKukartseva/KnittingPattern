@@ -20,8 +20,6 @@ final class PatternDraft {
     var name = ""
     var columns = 20
     var rows = 20
-    var cellSize: CellSize = .medium
-    var cellShape: CellShape = .square
     var showColumnNumbers = true
     var showRowNumbers = true
     var rowDirection: RowDirection = .bottomToTop
@@ -40,7 +38,6 @@ final class PatternDraft {
         }
         return Pattern(name: trimmed.isEmpty ? String(localized: "New Chart") : trimmed,
                        craft: craft, columns: columns, rows: rows,
-                       cellSize: cellSize, cellShape: cellShape,
                        showColumnNumbers: showColumnNumbers, showRowNumbers: showRowNumbers,
                        rowDirection: rowDirection, columnDirection: columnDirection,
                        imageData: imageData, cells: cells)
@@ -61,7 +58,7 @@ struct CreatePatternFlow: View {
 }
 
 #if DEBUG
-#Preview("Мастер создания") {
+#Preview("Create Flow") {
     CreatePatternFlow { _ in }
         .modelContainer(for: Pattern.self, inMemory: true)
 }

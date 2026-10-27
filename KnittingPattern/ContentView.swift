@@ -71,12 +71,12 @@ struct ContentView: View {
 }
 
 #if DEBUG
-#Preview("Со схемами") {
+#Preview("With Charts") {
     ContentView()
         .modelContainer(SampleData.previewContainer)
 }
 
-#Preview("Пустая библиотека") {
+#Preview("Empty Library") {
     ContentView()
         .modelContainer(for: Pattern.self, inMemory: true)
 }

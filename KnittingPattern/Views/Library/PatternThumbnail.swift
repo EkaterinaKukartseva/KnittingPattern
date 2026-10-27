@@ -39,7 +39,7 @@ struct PatternThumbnail: View {
 }
 
 #if DEBUG
-#Preview("Миниатюра") {
+#Preview("Thumbnail") {
     HStack {
         PatternThumbnail(pattern: SampleData.heart())
         PatternThumbnail(pattern: SampleData.knitStripes())

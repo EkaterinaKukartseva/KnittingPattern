@@ -7,7 +7,7 @@
 
 /// Идентификатор условного обозначения петли. Строковое значение
 /// записывается в схему, поэтому его нельзя менять у существующих петель.
-enum StitchID: String, CaseIterable, Codable {
+nonisolated enum StitchID: String, CaseIterable, Codable {
     
     // Крючок
     case chain = "ch"

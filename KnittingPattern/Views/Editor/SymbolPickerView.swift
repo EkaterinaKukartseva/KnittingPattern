@@ -71,11 +71,11 @@ struct SymbolPickerView: View {
 }
 
 #if DEBUG
-#Preview("Крючок") {
+#Preview("Crochet") {
     SymbolPickerView(craft: .crochet, selected: .singleCrochet) { _ in }
 }
 
-#Preview("Спицы") {
+#Preview("Knitting") {
     SymbolPickerView(craft: .knitting, selected: .knit) { _ in }
 }
 #endif

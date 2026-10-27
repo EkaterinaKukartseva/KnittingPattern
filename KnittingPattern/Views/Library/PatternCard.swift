@@ -78,7 +78,7 @@ struct PatternCard: View {
 }
 
 #if DEBUG
-#Preview("Карточка схемы") {
+#Preview("Chart Card") {
     PatternCard(pattern: SampleData.previewPattern, onRename: {}, onDelete: {})
         .frame(width: 180)
         .padding()

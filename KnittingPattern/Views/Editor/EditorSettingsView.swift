@@ -27,18 +27,6 @@ struct EditorSettingsView: View {
                     Text("Shrinking trims the outer stitches and rows. Undo history will be reset.")
                 }
 
-                Section("Cells") {
-                    Picker("Size", selection: $settings.cellSize) {
-                        Text("Small").tag(CellSize.small)
-                        Text("Medium").tag(CellSize.medium)
-                        Text("Large").tag(CellSize.large)
-                    }
-                    Picker("Shape", selection: $settings.cellShape) {
-                        Text("Square").tag(CellShape.square)
-                        Text("Rectangle").tag(CellShape.wide)
-                    }
-                }
-
                 Section("Numbering and Reading") {
                     Toggle("Column numbers", isOn: $settings.showColumnNumbers)
                     Toggle("Row numbers", isOn: $settings.showRowNumbers)
