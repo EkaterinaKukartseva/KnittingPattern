@@ -116,6 +116,8 @@ struct EditorView: View {
             )
         }
         .frame(width: layout.totalSize.width, height: layout.totalSize.height)
+        .accessibilityElement()
+        .accessibilityIdentifier("chartCanvas")
         .gesture(drawGesture(layout: layout), isEnabled: model.tool != .pan)
         .onTapGesture(coordinateSpace: .local) { location in
             guard model.tool == .pan, let cell = layout.cell(at: location) else { return }

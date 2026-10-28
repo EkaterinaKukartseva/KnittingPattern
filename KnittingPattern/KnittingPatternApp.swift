@@ -15,7 +15,7 @@ struct KnittingPatternApp: App {
 
     var sharedModelContainer: ModelContainer = {
         let schema = Schema(versionedSchema: CurrentSchema.self)
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
+        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: Self.isUITesting)
 
         do {
             let container = try ModelContainer(
@@ -31,6 +31,15 @@ struct KnittingPatternApp: App {
             fatalError("Could not create ModelContainer: \(error)")
         }
     }()
+
+    /// UI-тесты запускают приложение с `-uiTesting`: каждый тест начинает с пустой базы в памяти.
+    private static var isUITesting: Bool {
+        #if DEBUG
+        CommandLine.arguments.contains("-uiTesting")
+        #else
+        false
+        #endif
+    }
 
     var body: some Scene {
         WindowGroup {

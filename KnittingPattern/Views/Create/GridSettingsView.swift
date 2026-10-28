@@ -70,6 +70,7 @@ struct GridSettingsView: View {
                 onCreate(pattern)
             }
             .buttonStyle(PrimaryButtonStyle())
+            .accessibilityIdentifier("createChartButton")
         }
         .inlineNavigationTitle("Grid Settings")
     }
