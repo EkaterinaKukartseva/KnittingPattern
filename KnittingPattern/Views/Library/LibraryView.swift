@@ -60,7 +60,7 @@ struct LibraryView: View {
                 if filtered.isEmpty {
                     emptyState
                 } else {
-                    LazyVGrid(columns: [GridItem(.flexible(), spacing: 14), GridItem(.flexible(), spacing: 14)], spacing: 18) {
+                    LazyVGrid(columns: [GridItem(.adaptive(minimum: 150, maximum: 220), spacing: 14)], spacing: 18) {
                         ForEach(filtered) { pattern in
                             NavigationLink(value: pattern) {
                                 PatternCard(
