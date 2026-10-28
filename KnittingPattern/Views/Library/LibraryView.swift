@@ -26,6 +26,7 @@ struct LibraryView: View {
     }
 
     @Environment(\.modelContext) private var modelContext
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     @Environment(AppRouter.self) private var router
     @Query(sort: \Pattern.updatedAt, order: .reverse) private var patterns: [Pattern]
     @State private var searchText = ""
@@ -50,6 +51,12 @@ struct LibraryView: View {
         }
     }
 
+    /// На iPhone — две колонки, на iPad карточки крупнее: 3 в портрете, 4 в альбомной ориентации.
+    private var gridColumns: [GridItem] {
+        let isRegular = horizontalSizeClass == .regular
+        return [GridItem(.adaptive(minimum: isRegular ? 230 : 150, maximum: isRegular ? 340 : 220), spacing: isRegular ? 20 : 14)]
+    }
+
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
@@ -60,7 +67,7 @@ struct LibraryView: View {
                 if filtered.isEmpty {
                     emptyState
                 } else {
-                    LazyVGrid(columns: [GridItem(.adaptive(minimum: 150, maximum: 220), spacing: 14)], spacing: 18) {
+                    LazyVGrid(columns: gridColumns, spacing: 18) {
                         ForEach(filtered) { pattern in
                             NavigationLink(value: pattern) {
                                 PatternCard(

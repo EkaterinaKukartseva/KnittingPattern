@@ -117,6 +117,7 @@ struct EditorView: View {
         }
         .frame(width: layout.totalSize.width, height: layout.totalSize.height)
         .accessibilityElement()
+        .accessibilityLabel("Chart grid")
         .accessibilityIdentifier("chartCanvas")
         .gesture(drawGesture(layout: layout), isEnabled: model.tool != .pan)
         .onTapGesture(coordinateSpace: .local) { location in

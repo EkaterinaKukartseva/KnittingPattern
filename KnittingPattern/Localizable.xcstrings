@@ -365,6 +365,16 @@
         }
       }
     },
+    "Chart grid" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сетка схемы"
+          }
+        }
+      }
+    },
     "Chart name" : {
       "localizations" : {
         "ru" : {
