@@ -127,15 +127,18 @@ final class KnittingPatternUITests: XCTestCase {
         let copy = app.staticTexts.matching(NSPredicate(format: "label BEGINSWITH 'Scarf ('")).firstMatch
         XCTAssertTrue(copy.waitForExistence(timeout: 3))
 
-        openCardMenu(named: copy.label)
-        app.buttons["Delete"].tap()
-        app.buttons["Delete"].firstMatch.tap()
-        XCTAssertFalse(copy.waitForExistence(timeout: 1))
-
-        openCardMenu(named: "Scarf")
-        app.buttons["Delete"].tap()
-        app.buttons["Delete"].firstMatch.tap()
+        deleteChart(named: copy.label)
+        deleteChart(named: "Scarf")
         XCTAssertTrue(app.staticTexts["Your charts will appear here"].waitForExistence(timeout: 3))
+    }
+
+    /// Удаляет схему через меню карточки: ждёт диалог подтверждения и исчезновение карточки.
+    private func deleteChart(named name: String) {
+        openCardMenu(named: name)
+        app.buttons["Delete"].tap()
+        XCTAssertTrue(app.staticTexts["Delete chart “\(name)”?"].waitForExistence(timeout: 3))
+        app.buttons["Delete"].firstMatch.tap()
+        XCTAssertTrue(app.staticTexts[name].waitForNonExistence(timeout: 3))
     }
 
     func testFiltersAndSearch() {
