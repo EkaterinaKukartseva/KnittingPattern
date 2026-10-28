@@ -36,7 +36,7 @@ struct Stitch: Identifiable, Hashable {
     /// Название петли на языке устройства.
     var name: String { String(localized: nameResource) }
 
-    static func == (lhs: Stitch, rhs: Stitch) -> Bool { lhs.id == rhs.id }
+    static func == (lhs: Self, rhs: Self) -> Bool { lhs.id == rhs.id }
     func hash(into hasher: inout Hasher) { hasher.combine(id) }
 
     /// Контур символа, вписанный в `rect` (по меньшей стороне, по центру).

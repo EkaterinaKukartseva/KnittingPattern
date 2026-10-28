@@ -67,7 +67,7 @@ extension SchemaV1 {
             self.showRowNumbers = showRowNumbers
             self.rowDirectionRaw = rowDirection.rawValue
             self.columnDirectionRaw = columnDirection.rawValue
-            self.cellsData = Pattern.encode(cells ?? Array(repeating: .empty, count: columns * rows))
+            self.cellsData = Self.encode(cells ?? Array(repeating: .empty, count: columns * rows))
             self.imageData = imageData
             self.showImage = imageData != nil
             self.imageOpacity = 0.45
@@ -106,7 +106,7 @@ extension SchemaV1 {
                 return decoded
             }
             set {
-                cellsData = Pattern.encode(newValue)
+                cellsData = Self.encode(newValue)
                 updatedAt = .now
             }
         }

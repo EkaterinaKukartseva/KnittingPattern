@@ -30,7 +30,9 @@ struct CreatePatternView: View {
                 PhotosPicker(selection: $photoItem, matching: .images) {
                     sourceLabel(
                         icon: "photo", title: "From Image",
-                        subtitle: draft.imageData == nil ? "A photo of a chart becomes the background layer" : "Photo selected — tap to replace"
+                        subtitle: draft.imageData == nil
+                            ? "A photo of a chart becomes the background layer"
+                            : "Photo selected — tap to replace"
                     )
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .background(draft.source == .image ? .selected : .card, in: .rect(cornerRadius: 14))

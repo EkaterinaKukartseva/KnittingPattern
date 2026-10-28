@@ -39,12 +39,12 @@ struct GridSettingsView: View {
                 DirectionPicker(
                     title: "Row numbering",
                     selection: $draft.rowDirection,
-                    options: [(.bottomToTop, "arrow.up", "Bottom to top"), (.topToBottom, "arrow.down", "Top to bottom")]
+                    options: [.init(.bottomToTop, "arrow.up", "Bottom to top"), .init(.topToBottom, "arrow.down", "Top to bottom")]
                 )
                 DirectionPicker(
                     title: "Stitch reading",
                     selection: $draft.columnDirection,
-                    options: [(.leftToRight, "arrow.right", "Left to right"), (.rightToLeft, "arrow.left", "Right to left")]
+                    options: [.init(.leftToRight, "arrow.right", "Left to right"), .init(.rightToLeft, "arrow.left", "Right to left")]
                 )
 
                 if draft.imageData != nil {

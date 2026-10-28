@@ -1,0 +1,97 @@
+# Правила SwiftLint для KnittingPattern.
+# Запускается при каждой сборке через SwiftLintBuildToolPlugin.
+
+included:
+  - KnittingPattern
+  - KnittingPatternTests
+  - KnittingPatternUITests
+
+disabled_rules:
+  # Висячие запятые удобны в многострочных литералах: меньше шума в диффах.
+  - trailing_comma
+  # В SwiftUI это обычная запись: .sheet(onDismiss:) { }, Button(action:) { }.
+  - multiple_closures_with_trailing_closure
+
+opt_in_rules:
+  - closure_spacing
+  - collection_alignment
+  - contains_over_filter_count
+  - contains_over_first_not_nil
+  - empty_count
+  - empty_string
+  - first_where
+  - last_where
+  - modifier_order
+  - operator_usage_whitespace
+  - prefer_self_in_static_references
+  - redundant_nil_coalescing
+  - sorted_first_last
+  - toggle_bool
+  - unneeded_parentheses_in_closure_argument
+
+# Xcode оставляет отступ в пустых строках — это не ошибка.
+trailing_whitespace:
+  ignores_empty_lines: true
+
+line_length:
+  warning: 140
+  error: 200
+  ignores_comments: true
+  ignores_urls: true
+
+type_body_length:
+  warning: 400
+  error: 600
+
+file_length:
+  warning: 500
+  error: 800
+
+function_body_length:
+  warning: 80
+  error: 150
+
+# Короткие имена — координаты сетки и счётчики в алгоритмах (Брезенхем, заливка),
+# а в описаниях значков петель: p — точка в долях клетки, s — сторона клетки.
+identifier_name:
+  excluded:
+    - a
+    - b
+    - c
+    - p
+    - s
+    - r
+    - x
+    - y
+    - i
+    - id
+    - dc
+    - dr
+    - dx
+    - dy
+    - sx
+    - sy
+    - e2
+
+custom_rules:
+  # После объявления типа — пустая строка перед первым членом:
+  #
+  #   struct ChartView: View {
+  #
+  #       let settings: GridSettings
+  empty_line_after_type_declaration:
+    name: "Empty Line after Type Declaration"
+    regex: '(?m)^[ \t]*(?:(?:@\w+(?:\([^)\n]*\))?|public|private|fileprivate|internal|package|open|final|nonisolated|indirect)\s+)*(?:struct|class|enum|extension|protocol|actor)\s[^\n{]*\{[ \t]*\n(?![ \t]*\n)'
+    message: "Add an empty line after the type declaration"
+    severity: warning
+
+  # Без пустой строки перед закрывающей скобкой. Заменяет встроенное правило
+  # с тем же именем: оно давало бы второе, дублирующее предупреждение.
+  vertical_whitespace_closing_braces:
+    included: ".*.swift"
+    regex: '\n[ \t]*\n[ \t]*[)}\]]'
+    name: "Vertical Whitespace before Closing Braces"
+    match_kinds:
+      - identifier
+    message: "Don't include vertical whitespace (empty line) before closing braces."
+    severity: error

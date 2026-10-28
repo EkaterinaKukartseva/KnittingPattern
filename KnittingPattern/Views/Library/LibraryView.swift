@@ -11,6 +11,7 @@ import SwiftData
 struct LibraryView: View {
     
     enum Filter: String, CaseIterable, Identifiable {
+        
         case all, crochet, knitting, favorites
         var id: String { rawValue }
 

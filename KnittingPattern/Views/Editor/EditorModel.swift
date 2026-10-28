@@ -10,7 +10,9 @@ import SwiftData
 
 @Observable
 final class EditorModel {
+    
     enum Tool: String, CaseIterable, Identifiable {
+        
         case pan, pencil, eraser, fill, select
 
         var id: String { rawValue }
@@ -37,6 +39,7 @@ final class EditorModel {
     }
 
     struct Clipboard {
+        
         var width: Int
         var height: Int
         var cells: [Cell]

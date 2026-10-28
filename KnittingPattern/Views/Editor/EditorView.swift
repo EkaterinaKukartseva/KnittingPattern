@@ -217,7 +217,9 @@ struct EditorView: View {
         }
     }
 
-    private func selectionButton(_ icon: String, _ label: LocalizedStringKey, tint: Color = .ink, action: @escaping () -> Void) -> some View {
+    private func selectionButton(
+        _ icon: String, _ label: LocalizedStringKey, tint: Color = .ink, action: @escaping () -> Void
+    ) -> some View {
         Button(action: action) {
             Image(systemName: icon)
                 .font(.callout)

@@ -57,7 +57,7 @@ nonisolated struct Cell: Codable, Equatable, Hashable {
     var color: CellColor?
     var background: CellColor?
 
-    static let empty = Cell()
+    static let empty = Self()
     var isEmpty: Bool { symbol == nil && background == nil }
 
     enum CodingKeys: String, CodingKey {

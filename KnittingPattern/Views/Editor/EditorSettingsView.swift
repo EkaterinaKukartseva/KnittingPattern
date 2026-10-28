@@ -10,6 +10,7 @@ import SwiftData
 
 /// Настройки сетки уже созданной схемы: размер, клетки, нумерация, фото.
 struct EditorSettingsView: View {
+    
     @Environment(\.dismiss) private var dismiss
     @Bindable var pattern: Pattern
     @State var settings: GridSettings

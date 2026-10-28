@@ -31,7 +31,7 @@ nonisolated enum CellColor: Hashable, Codable {
     case palette(PaletteColor)
     case custom(Color.Resolved)
 
-    static let `default` = CellColor.palette(.ink)
+    static let `default` = Self.palette(.ink)
 
     @MainActor var color: Color {
         switch self {

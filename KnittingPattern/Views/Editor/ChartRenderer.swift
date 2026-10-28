@@ -62,12 +62,14 @@ struct ChartLayout {
 }
 
 struct GridPoint: Hashable {
+    
     var column: Int
     var row: Int
 }
 
 /// Прямоугольная область клеток (включительно).
 struct GridRegion: Equatable {
+    
     var start: GridPoint
     var end: GridPoint
 
@@ -90,7 +92,6 @@ enum ChartRenderer {
         selection: GridRegion? = nil,
         showNumbers: Bool = true
     ) {
-        let settings = layout.settings
         let grid = layout.gridRect
         context.fill(Path(grid), with: .color(Color.gridBackground))
 
@@ -101,7 +102,19 @@ enum ChartRenderer {
             imageContext.draw(image, in: grid)
         }
 
-        // Фон и символы клеток
+        drawCells(&context, layout: layout, cells: cells)
+        drawGridLines(&context, layout: layout)
+        if let selection {
+            drawSelection(&context, layout: layout, selection: selection)
+        }
+        if showNumbers {
+            drawNumbers(&context, layout: layout)
+        }
+    }
+
+    /// Фон и символы клеток.
+    private static func drawCells(_ context: inout GraphicsContext, layout: ChartLayout, cells: [Cell]) {
+        let settings = layout.settings
         for row in 0..<settings.rows {
             for column in 0..<settings.columns {
                 let index = row * settings.columns + column
@@ -120,8 +133,12 @@ enum ChartRenderer {
                 }
             }
         }
+    }
 
-        // Линии сетки; каждая 10-я петля/ряд — жирнее, как в печатных схемах
+    /// Линии сетки; каждая 10-я петля/ряд — жирнее, как в печатных схемах.
+    private static func drawGridLines(_ context: inout GraphicsContext, layout: ChartLayout) {
+        let settings = layout.settings
+        let grid = layout.gridRect
         var thin = Path()
         var bold = Path()
         for column in 0...settings.columns {
@@ -143,20 +160,24 @@ enum ChartRenderer {
         context.stroke(thin, with: .color(Color.gridLine), lineWidth: 0.5)
         context.stroke(bold, with: .color(Color.gridLineBold), lineWidth: 1)
         context.stroke(Path(grid), with: .color(Color.gridLineBold), lineWidth: 1)
+    }
 
-        if let selection {
-            let rect = layout.rect(column: selection.minColumn, row: selection.minRow)
-                .union(layout.rect(column: selection.maxColumn, row: selection.maxRow))
-            context.fill(Path(rect), with: .color(Color.accent.opacity(0.22)))
-            context.stroke(Path(rect), with: .color(Color.accent), lineWidth: 1.5)
-            for corner in [rect.origin, CGPoint(x: rect.maxX, y: rect.minY),
-                           CGPoint(x: rect.minX, y: rect.maxY), CGPoint(x: rect.maxX, y: rect.maxY)] {
-                let handle = CGRect(x: corner.x - 4, y: corner.y - 4, width: 8, height: 8)
-                context.fill(Path(roundedRect: handle, cornerRadius: 2), with: .color(Color.accent))
-            }
+    /// Выделенная область с маркерами по углам.
+    private static func drawSelection(_ context: inout GraphicsContext, layout: ChartLayout, selection: GridRegion) {
+        let rect = layout.rect(column: selection.minColumn, row: selection.minRow)
+            .union(layout.rect(column: selection.maxColumn, row: selection.maxRow))
+        context.fill(Path(rect), with: .color(Color.accent.opacity(0.22)))
+        context.stroke(Path(rect), with: .color(Color.accent), lineWidth: 1.5)
+        for corner in [rect.origin, CGPoint(x: rect.maxX, y: rect.minY),
+                       CGPoint(x: rect.minX, y: rect.maxY), CGPoint(x: rect.maxX, y: rect.maxY)] {
+            let handle = CGRect(x: corner.x - 4, y: corner.y - 4, width: 8, height: 8)
+            context.fill(Path(roundedRect: handle, cornerRadius: 2), with: .color(Color.accent))
         }
+    }
 
-        guard showNumbers else { return }
+    /// Номера рядов слева и петель снизу.
+    private static func drawNumbers(_ context: inout GraphicsContext, layout: ChartLayout) {
+        let settings = layout.settings
         let fontSize = min(11, max(7, layout.cellSide * 0.42))
         if settings.showRowNumbers {
             for row in 0..<settings.rows {
@@ -181,6 +202,7 @@ enum ChartRenderer {
 
 /// Статичная схема — для превью в библиотеке и экспорта.
 struct ChartView: View {
+
     let settings: GridSettings
     let cells: [Cell]
     var image: Image?

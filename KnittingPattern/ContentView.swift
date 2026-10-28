@@ -11,6 +11,7 @@ import SwiftData
 /// Навигация приложения: вкладки, стек библиотеки и окно создания схемы.
 @Observable
 final class AppRouter {
+    
     enum Tab: Hashable { case patterns, create, legend, profile }
 
     var selectedTab: Tab = .patterns
@@ -25,6 +26,7 @@ final class AppRouter {
 }
 
 struct ContentView: View {
+    
     @State private var router = AppRouter()
 
     var body: some View {

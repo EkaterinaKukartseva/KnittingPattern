@@ -8,23 +8,36 @@
 import SwiftUI
 
 struct DirectionPicker<Value: Hashable>: View {
-    
+
+    struct Option {
+        
+        let value: Value
+        let icon: String
+        let label: LocalizedStringKey
+
+        init(_ value: Value, _ icon: String, _ label: LocalizedStringKey) {
+            self.value = value
+            self.icon = icon
+            self.label = label
+        }
+    }
+
     let title: LocalizedStringKey
     @Binding var selection: Value
-    let options: [(Value, String, LocalizedStringKey)]
+    let options: [Option]
 
     var body: some View {
         HStack {
             Text(title).font(.subheadline).foregroundStyle(.ink)
             Spacer()
             HStack(spacing: 8) {
-                ForEach(options, id: \.0) { value, icon, label in
-                    SelectableCard(isSelected: selection == value, action: { selection = value }) {
-                        Image(systemName: icon)
+                ForEach(options, id: \.value) { option in
+                    SelectableCard(isSelected: selection == option.value, action: { selection = option.value }) {
+                        Image(systemName: option.icon)
                             .foregroundStyle(.accentDark)
                     }
                     .frame(width: 64, height: 38)
-                    .accessibilityLabel(label)
+                    .accessibilityLabel(option.label)
                 }
             }
         }
@@ -36,7 +49,7 @@ struct DirectionPicker<Value: Hashable>: View {
     @Previewable @State var direction = RowDirection.bottomToTop
     DirectionPicker(title: "Row numbering",
                     selection: $direction,
-                    options: [(.bottomToTop, "arrow.up", "Bottom to top"), (.topToBottom, "arrow.down", "Top to bottom")])
+                    options: [.init(.bottomToTop, "arrow.up", "Bottom to top"), .init(.topToBottom, "arrow.down", "Top to bottom")])
     .padding()
     .background(Color.background)
 }
