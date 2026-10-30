@@ -1,6 +1,6 @@
 //
 //  SchemaV1.swift
-//  KnittingPattern
+//  Threadfolio
 //
 //  Created by Ekaterina on 27.10.2026.
 //

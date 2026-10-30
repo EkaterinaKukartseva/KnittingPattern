@@ -1,6 +1,6 @@
 //
 //  Pattern.swift
-//  KnittingPattern
+//  Threadfolio
 //
 //  Created by Ekaterina on 26.10.2026.
 //
@@ -11,7 +11,7 @@ import SwiftData
 
 nonisolated enum Craft: String, CaseIterable, Identifiable, Codable {
     
-    case crochet, knitting
+    case crochet, knitting, crossStitch
 
     var id: String { rawValue }
 
@@ -19,6 +19,16 @@ nonisolated enum Craft: String, CaseIterable, Identifiable, Codable {
         switch self {
         case .crochet: String(localized: "Crochet")
         case .knitting: String(localized: "Knitting")
+        case .crossStitch: String(localized: "Cross-stitch")
+        }
+    }
+
+    /// Значок SF Symbols для карточек и статистики.
+    var icon: String {
+        switch self {
+        case .crochet: "line.diagonal"
+        case .knitting: "pause"
+        case .crossStitch: "xmark"
         }
     }
 
@@ -26,6 +36,7 @@ nonisolated enum Craft: String, CaseIterable, Identifiable, Codable {
         switch self {
         case .crochet: .singleCrochet
         case .knitting: .knit
+        case .crossStitch: .fullCross
         }
     }
 }

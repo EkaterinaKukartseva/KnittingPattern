@@ -1,6 +1,6 @@
 //
 //  ModelTests.swift
-//  KnittingPatternTests
+//  ThreadfolioTests
 //
 //  Created by Ekaterina on 28.10.2026.
 //
@@ -9,7 +9,7 @@ import Foundation
 import SwiftData
 import SwiftUI
 import Testing
-@testable import KnittingPattern
+@testable import Threadfolio
 
 struct CellColorTests {
 
@@ -37,6 +37,33 @@ struct CellColorTests {
         #expect(String(data: data, encoding: .utf8) == "{}")
         #expect(Cell.empty.isEmpty)
         #expect(!Cell(background: .palette(.pink)).isEmpty)
+    }
+}
+
+struct ThreadUsageTests {
+
+    @Test func countsStitchesPerColorMostUsedFirst() {
+        let cells = [
+            Cell(symbol: .fullCross, color: .palette(.pink)),
+            Cell(symbol: .halfCrossForward, color: .palette(.green)),
+            Cell(symbol: .fullCross, color: .palette(.pink)),
+            Cell(symbol: .frenchKnot),
+        ]
+        let threads = ThreadUsage.count(in: cells)
+        #expect(threads.map(\.color) == [.palette(.pink), .palette(.ink), .palette(.green)])
+        #expect(threads.map(\.count) == [2, 1, 1])
+    }
+
+    @Test func backgroundAndEmptyCellsAreNotThreads() {
+        let cells = [Cell.empty, Cell(background: .palette(.beige)), Cell(symbol: .fullCross, background: .palette(.beige))]
+        let threads = ThreadUsage.count(in: cells)
+        #expect(threads == [ThreadUsage(color: .default, count: 1)])
+    }
+
+    @Test func customColorsGoAfterPaletteOnTie() {
+        let custom = CellColor.custom(Color.Resolved(red: 0.5, green: 0.2, blue: 0.9))
+        let cells = [Cell(symbol: .fullCross, color: custom), Cell(symbol: .fullCross, color: .palette(.beige))]
+        #expect(ThreadUsage.count(in: cells).map(\.color) == [.palette(.beige), custom])
     }
 }
 

@@ -1,6 +1,6 @@
 //
 //  EditorSettingsView.swift
-//  KnittingPattern
+//  Threadfolio
 //
 //  Created by Ekaterina on 26.10.2026.
 //
@@ -20,7 +20,10 @@ struct EditorSettingsView: View {
         NavigationStack {
             Form {
                 Section {
-                    NumberStepperRow(title: "Width (stitches)", value: $settings.columns)
+                    NumberStepperRow(
+                        title: pattern.craft == .crossStitch ? "Width (crosses)" : "Width (stitches)",
+                        value: $settings.columns
+                    )
                     NumberStepperRow(title: "Height (rows)", value: $settings.rows)
                 } header: {
                     Text("Size")
@@ -35,7 +38,7 @@ struct EditorSettingsView: View {
                         Text("Bottom").tag(RowDirection.bottomToTop)
                         Text("Top").tag(RowDirection.topToBottom)
                     }
-                    Picker("Stitch 1", selection: $settings.columnDirection) {
+                    Picker(pattern.craft == .crossStitch ? "Cross 1" : "Stitch 1", selection: $settings.columnDirection) {
                         Text("Left").tag(ColumnDirection.leftToRight)
                         Text("Right").tag(ColumnDirection.rightToLeft)
                     }

@@ -1,6 +1,6 @@
 //
 //  PatternInfoView.swift
-//  KnittingPattern
+//  Threadfolio
 //
 //  Created by Ekaterina on 26.10.2026.
 //
@@ -29,7 +29,10 @@ struct PatternInfoView: View {
                 }
 
                 Section {
-                    TextField("Yarn, hook or needles, gauge, size…", text: $pattern.summary, axis: .vertical)
+                    TextField(
+                        pattern.craft == .crossStitch ? "Fabric, floss, size…" : "Yarn, hook or needles, gauge, size…",
+                        text: $pattern.summary, axis: .vertical
+                    )
                         .lineLimit(3...8)
                 } header: {
                     Text("Description")
@@ -68,6 +71,12 @@ struct PatternInfoView: View {
                                 Text(stitch.name)
                             }
                         }
+                    }
+                }
+
+                if pattern.craft == .crossStitch, !threads.isEmpty {
+                    Section("Threads") {
+                        ForEach(threads) { ThreadRow(thread: $0) }
                     }
                 }
 
@@ -111,6 +120,10 @@ struct PatternInfoView: View {
                 }
             }
         }
+    }
+
+    private var threads: [ThreadUsage] {
+        ThreadUsage.count(in: pattern.cells)
     }
 
     private var shareText: String {

@@ -1,13 +1,13 @@
 //
 //  EditorModelTests.swift
-//  KnittingPatternTests
+//  ThreadfolioTests
 //
 //  Created by Ekaterina on 28.10.2026.
 //
 
 import SwiftUI
 import Testing
-@testable import KnittingPattern
+@testable import Threadfolio
 
 @MainActor
 struct EditorModelTests {
@@ -34,6 +34,7 @@ struct EditorModelTests {
     @Test func defaultStitchDependsOnCraft() {
         #expect(makeModel(craft: .crochet).currentSymbol == .singleCrochet)
         #expect(makeModel(craft: .knitting).currentSymbol == .knit)
+        #expect(makeModel(craft: .crossStitch).currentSymbol == .fullCross)
     }
 
     @Test func strokeFillsEveryCellAlongTheWay() {

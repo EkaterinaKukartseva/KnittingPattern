@@ -1,6 +1,6 @@
 //
-//  KnittingPatternUITests.swift
-//  KnittingPatternUITests
+//  ThreadfolioUITests.swift
+//  ThreadfolioUITests
 //
 //  Created by Ekaterina on 26.10.2026.
 //
@@ -10,7 +10,7 @@ import XCTest
 /// Сценарии пользователя: создание схемы, рисование, библиотека, профиль.
 /// Каждый тест запускает приложение с пустой базой в памяти и английским интерфейсом.
 @MainActor
-final class KnittingPatternUITests: XCTestCase {
+final class ThreadfolioUITests: XCTestCase {
 
     private var app: XCUIApplication!
 
@@ -171,7 +171,7 @@ final class KnittingPatternUITests: XCTestCase {
         app.tabBars.buttons["Profile"].tap()
 
         XCTAssertTrue(app.staticTexts["Version"].waitForExistence(timeout: 3))
-        XCTAssertTrue(app.staticTexts["3"].exists, "Total number of sample charts")
+        XCTAssertTrue(app.staticTexts["4"].exists, "Total number of sample charts")
         XCTAssertTrue(app.buttons["Theme"].exists || app.staticTexts["Theme"].exists)
     }
 

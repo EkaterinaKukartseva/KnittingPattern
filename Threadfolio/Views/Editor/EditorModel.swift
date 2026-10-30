@@ -1,6 +1,6 @@
 //
 //  EditorModel.swift
-//  KnittingPattern
+//  Threadfolio
 //
 //  Created by Ekaterina on 26.10.2026.
 //
@@ -348,7 +348,7 @@ final class EditorModel {
     /// Петли, использованные в схеме, — для легенды.
     var usedStitches: [Stitch] {
         let ids = Set(cells.compactMap(\.symbol))
-        return (Stitch.crochet + Stitch.knitting).filter { ids.contains($0.id) }
+        return Stitch.everything.filter { ids.contains($0.id) }
     }
 
     /// Алгоритм Брезенхема: клетки на отрезке между двумя точками.

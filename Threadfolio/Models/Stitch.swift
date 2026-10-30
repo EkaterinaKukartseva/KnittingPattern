@@ -1,6 +1,6 @@
 //
 //  Stitch.swift
-//  KnittingPattern
+//  Threadfolio
 //
 //  Created by Ekaterina on 26.10.2026.
 //
@@ -11,7 +11,8 @@ import SwiftUI
 /// поэтому одинаково чётко выглядит в сетке, палитре и при экспорте.
 struct Stitch: Identifiable, Hashable {
     
-    enum Style { case stroke, fill, fillCell }
+    /// `thread` — толстая линия с круглыми концами, как стежок нитью.
+    enum Style { case stroke, thread, fill, fillCell }
 
     let id: StitchID
     private let nameResource: LocalizedStringResource
@@ -57,8 +58,8 @@ struct Stitch: Identifiable, Hashable {
             context.fill(Path(rect), with: .color(Color.noStitch))
         case .fill:
             context.fill(path(in: rect), with: .color(color))
-        case .stroke:
-            let width = max(1, min(rect.width, rect.height) * 0.08)
+        case .stroke, .thread:
+            let width = max(1, min(rect.width, rect.height) * (style == .thread ? 0.16 : 0.08))
             context.stroke(
                 path(in: rect), with: .color(color),
                 style: StrokeStyle(lineWidth: width, lineCap: .round, lineJoin: .round)
@@ -72,7 +73,16 @@ struct Stitch: Identifiable, Hashable {
 extension Stitch {
     
     static func all(for craft: Craft) -> [Stitch] {
-        craft == .crochet ? crochet : knitting
+        switch craft {
+        case .crochet: crochet
+        case .knitting: knitting
+        case .crossStitch: crossStitch
+        }
+    }
+
+    /// Все обозначения всех видов рукоделия.
+    static var everything: [Stitch] {
+        crochet + knitting + crossStitch
     }
 
     static func with(id: StitchID?) -> Stitch? {
@@ -81,7 +91,7 @@ extension Stitch {
     }
 
     private static let byID: [StitchID: Stitch] = Dictionary(
-        (crochet + knitting).map { ($0.id, $0) }, uniquingKeysWith: { first, _ in first }
+        everything.map { ($0.id, $0) }, uniquingKeysWith: { first, _ in first }
     )
 
     private static func line(_ path: inout Path, _ a: CGPoint, _ b: CGPoint) {
@@ -92,6 +102,22 @@ extension Stitch {
     private static func tee(_ path: inout Path, _ p: (CGFloat, CGFloat) -> CGPoint) {
         line(&path, p(0.28, 0.15), p(0.72, 0.15))
         line(&path, p(0.5, 0.15), p(0.5, 0.88))
+    }
+
+    /// Четверть креста: от угла клетки к центру. `x`, `y` — угол (0 или 1).
+    private static func quarter(_ path: inout Path, _ p: (CGFloat, CGFloat) -> CGPoint, _ x: CGFloat, _ y: CGFloat) {
+        let inset: CGFloat = 0.18
+        line(&path, p(x == 0 ? inset : 1 - inset, y == 0 ? inset : 1 - inset), p(0.5, 0.5))
+    }
+
+    /// Три четверти креста: полукрест через всю клетку и четверть в угол (`x`, `y`)
+    /// напротив его концов.
+    private static func threeQuarter(_ path: inout Path, _ p: (CGFloat, CGFloat) -> CGPoint, _ x: CGFloat, _ y: CGFloat) {
+        let inset: CGFloat = 0.18
+        // Диагональ, не проходящая через выбранный угол.
+        line(&path, p(x == 0 ? 1 - inset : inset, y == 0 ? inset : 1 - inset),
+             p(x == 0 ? inset : 1 - inset, y == 0 ? 1 - inset : inset))
+        quarter(&path, p, x, y)
     }
 
     static let crochet: [Stitch] = [
@@ -255,6 +281,46 @@ extension Stitch {
             path.addRect(CGRect(origin: p(0.1, 0.1), size: CGSize(width: 0.8 * s, height: 0.8 * s)))
         },
     ]
+
+    static let crossStitch: [Stitch] = [
+        Stitch(.fullCross, "Full cross", .crossStitch, style: .thread) { path, p, _ in
+            line(&path, p(0.18, 0.82), p(0.82, 0.18))
+            line(&path, p(0.18, 0.18), p(0.82, 0.82))
+        },
+        Stitch(.halfCrossForward, "Half cross (/)", .crossStitch, style: .thread) { path, p, _ in
+            line(&path, p(0.18, 0.82), p(0.82, 0.18))
+        },
+        Stitch(.halfCrossBackward, "Half cross (\\)", .crossStitch, style: .thread) { path, p, _ in
+            line(&path, p(0.18, 0.18), p(0.82, 0.82))
+        },
+        Stitch(.quarterTopLeft, "¼ cross, top left", .crossStitch, style: .thread) { path, p, _ in
+            quarter(&path, p, 0, 0)
+        },
+        Stitch(.quarterTopRight, "¼ cross, top right", .crossStitch, style: .thread) { path, p, _ in
+            quarter(&path, p, 1, 0)
+        },
+        Stitch(.quarterBottomLeft, "¼ cross, bottom left", .crossStitch, style: .thread) { path, p, _ in
+            quarter(&path, p, 0, 1)
+        },
+        Stitch(.quarterBottomRight, "¼ cross, bottom right", .crossStitch, style: .thread) { path, p, _ in
+            quarter(&path, p, 1, 1)
+        },
+        Stitch(.threeQuarterTopLeft, "¾ cross, top left", .crossStitch, style: .thread) { path, p, _ in
+            threeQuarter(&path, p, 0, 0)
+        },
+        Stitch(.threeQuarterTopRight, "¾ cross, top right", .crossStitch, style: .thread) { path, p, _ in
+            threeQuarter(&path, p, 1, 0)
+        },
+        Stitch(.threeQuarterBottomLeft, "¾ cross, bottom left", .crossStitch, style: .thread) { path, p, _ in
+            threeQuarter(&path, p, 0, 1)
+        },
+        Stitch(.threeQuarterBottomRight, "¾ cross, bottom right", .crossStitch, style: .thread) { path, p, _ in
+            threeQuarter(&path, p, 1, 1)
+        },
+        Stitch(.frenchKnot, "French knot", .crossStitch, style: .fill) { path, p, s in
+            path.addEllipse(in: CGRect(origin: p(0.32, 0.32), size: CGSize(width: 0.36 * s, height: 0.36 * s)))
+        },
+    ]
 }
 
 /// Символ петли как SwiftUI-вью — для палитры и легенды.
@@ -275,7 +341,7 @@ struct StitchGlyph: View {
 #Preview("All Symbols") {
     ScrollView {
         LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 6), spacing: 12) {
-            ForEach(Stitch.crochet + Stitch.knitting) { stitch in
+            ForEach(Stitch.everything) { stitch in
                 StitchGlyph(stitch: stitch)
                     .frame(width: 36, height: 36)
                     .padding(6)

@@ -1,6 +1,6 @@
 //
 //  GridSettingsView.swift
-//  KnittingPattern
+//  Threadfolio
 //
 //  Created by Ekaterina on 26.10.2026.
 //
@@ -24,7 +24,10 @@ struct GridSettingsView: View {
                     .overlay { RoundedRectangle(cornerRadius: 12).strokeBorder(.cardBorder) }
 
                 VStack(spacing: 12) {
-                    NumberStepperRow(title: "Width (stitch count)", value: $draft.columns)
+                    NumberStepperRow(
+                        title: draft.craft == .crossStitch ? "Width (cross count)" : "Width (stitch count)",
+                        value: $draft.columns
+                    )
                     NumberStepperRow(title: "Height (row count)", value: $draft.rows)
                 }
 
@@ -42,7 +45,7 @@ struct GridSettingsView: View {
                     options: [.init(.bottomToTop, "arrow.up", "Bottom to top"), .init(.topToBottom, "arrow.down", "Top to bottom")]
                 )
                 DirectionPicker(
-                    title: "Stitch reading",
+                    title: draft.craft == .crossStitch ? "Cross reading" : "Stitch reading",
                     selection: $draft.columnDirection,
                     options: [.init(.leftToRight, "arrow.right", "Left to right"), .init(.rightToLeft, "arrow.left", "Right to left")]
                 )

@@ -1,13 +1,13 @@
 //
-//  KnittingPatternTests.swift
-//  KnittingPatternTests
+//  StitchTests.swift
+//  ThreadfolioTests
 //
 //  Created by Ekaterina on 26.10.2026.
 //
 
 import Foundation
 import Testing
-@testable import KnittingPattern
+@testable import Threadfolio
 
 struct StitchTests {
 
@@ -18,7 +18,7 @@ struct StitchTests {
     }
 
     @Test func eachStitchIsListedOnce() {
-        let ids = (Stitch.crochet + Stitch.knitting).map(\.id)
+        let ids = Stitch.everything.map(\.id)
         #expect(ids.count == Set(ids).count)
         #expect(Set(ids) == Set(StitchID.allCases))
     }

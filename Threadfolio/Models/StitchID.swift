@@ -1,6 +1,6 @@
 //
 //  StitchID.swift
-//  KnittingPattern
+//  Threadfolio
 //
 //  Created by Ekaterina on 26.10.2026.
 //
@@ -48,4 +48,18 @@ nonisolated enum StitchID: String, CaseIterable, Codable {
     case bindOff = "bo"
     case castOn = "co"
     case noStitch = "ns"
+
+    // Вышивка крестом
+    case fullCross = "xs"
+    case halfCrossForward = "hs"
+    case halfCrossBackward = "hsb"
+    case quarterTopLeft = "qs-tl"
+    case quarterTopRight = "qs-tr"
+    case quarterBottomLeft = "qs-bl"
+    case quarterBottomRight = "qs-br"
+    case threeQuarterTopLeft = "tqs-tl"
+    case threeQuarterTopRight = "tqs-tr"
+    case threeQuarterBottomLeft = "tqs-bl"
+    case threeQuarterBottomRight = "tqs-br"
+    case frenchKnot = "fk"
 }

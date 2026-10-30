@@ -1,13 +1,13 @@
 //
 //  LegendView.swift
-//  KnittingPattern
+//  Threadfolio
 //
 //  Created by Ekaterina on 26.10.2026.
 //
 
 import SwiftUI
 
-/// Справочник условных обозначений для крючка и спиц.
+/// Справочник условных обозначений для крючка, спиц и вышивки.
 struct LegendView: View {
     
     @State private var craft: Craft = .crochet

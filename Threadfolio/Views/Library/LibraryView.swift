@@ -1,6 +1,6 @@
 //
 //  LibraryView.swift
-//  KnittingPattern
+//  Threadfolio
 //
 //  Created by Ekaterina on 26.10.2026.
 //
@@ -12,7 +12,7 @@ struct LibraryView: View {
     
     enum Filter: String, CaseIterable, Identifiable {
         
-        case all, crochet, knitting, favorites
+        case all, crochet, knitting, crossStitch, favorites
         var id: String { rawValue }
 
         var title: LocalizedStringKey {
@@ -20,6 +20,7 @@ struct LibraryView: View {
             case .all: "All"
             case .crochet: "Crochet"
             case .knitting: "Knitting"
+            case .crossStitch: "Cross-stitch"
             case .favorites: "Favorites"
             }
         }
@@ -40,6 +41,7 @@ struct LibraryView: View {
             case .all: true
             case .crochet: pattern.craft == .crochet
             case .knitting: pattern.craft == .knitting
+            case .crossStitch: pattern.craft == .crossStitch
             case .favorites: pattern.isFavorite
             }
             guard matchesFilter else { return false }

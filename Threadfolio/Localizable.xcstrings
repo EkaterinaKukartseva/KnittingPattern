@@ -145,6 +145,58 @@
         }
       }
     },
+    "%lld stitches" : {
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld stitch"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld stitches"
+                }
+              }
+            }
+          }
+        },
+        "ru" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld стежок"
+                }
+              },
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld стежка"
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld стежков"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld стежка"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "A photo of a chart becomes the background layer" : {
       "localizations" : {
         "ru" : {
@@ -245,6 +297,16 @@
         }
       }
     },
+    "Beige" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Бежевый"
+          }
+        }
+      }
+    },
     "Bind off" : {
       "localizations" : {
         "ru" : {
@@ -255,12 +317,32 @@
         }
       }
     },
+    "Black" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Чёрный"
+          }
+        }
+      }
+    },
     "Blank Grid" : {
       "localizations" : {
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Пустая таблица"
+          }
+        }
+      }
+    },
+    "Blue" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Синий"
           }
         }
       }
@@ -420,7 +502,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Выбрать символ петли"
+            "value" : "Выбрать символ"
           }
         }
       }
@@ -500,7 +582,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Тип вязания"
+            "value" : "Вид рукоделия"
           }
         }
       }
@@ -541,6 +623,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Крючок"
+          }
+        }
+      }
+    },
+    "Cross 1" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Крестик 1"
+          }
+        }
+      }
+    },
+    "Cross reading" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Чтение крестиков"
+          }
+        }
+      }
+    },
+    "Cross-stitch" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вышивка"
+          }
+        }
+      }
+    },
+    "Custom color" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Свой цвет"
           }
         }
       }
@@ -675,6 +797,16 @@
         }
       }
     },
+    "Fabric, floss, size…" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Канва, мулине, размер…"
+          }
+        }
+      }
+    },
     "Favorites" : {
       "localizations" : {
         "ru" : {
@@ -710,7 +842,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Заполнить выбранной петлёй"
+            "value" : "Заполнить выбранным символом"
           }
         }
       }
@@ -731,6 +863,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Отразить по вертикали"
+          }
+        }
+      }
+    },
+    "French knot" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Французский узелок"
           }
         }
       }
@@ -775,12 +917,62 @@
         }
       }
     },
+    "Full cross" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Полный крест"
+          }
+        }
+      }
+    },
+    "Gray" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Серый"
+          }
+        }
+      }
+    },
+    "Green" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Зелёный"
+          }
+        }
+      }
+    },
     "Grid Settings" : {
       "localizations" : {
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Настройки сетки"
+          }
+        }
+      }
+    },
+    "Half cross (/)" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Полукрест (/)"
+          }
+        }
+      }
+    },
+    "Half cross (\\)" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Полукрест (\\)"
           }
         }
       }
@@ -1055,6 +1247,16 @@
         }
       }
     },
+    "Pink" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Розовый"
+          }
+        }
+      }
+    },
     "Popcorn" : {
       "localizations" : {
         "ru" : {
@@ -1310,7 +1512,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "При уменьшении крайние петли и ряды обрежутся. История отмены сбросится."
+            "value" : "При уменьшении крайние столбцы и ряды обрежутся. История отмены сбросится."
           }
         }
       }
@@ -1440,7 +1642,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Нажмите на клетку, чтобы выбрать петлю. Схему можно двигать и масштабировать."
+            "value" : "Нажмите на клетку, чтобы выбрать символ. Схему можно двигать и масштабировать."
           }
         }
       }
@@ -1471,6 +1673,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Это действие нельзя отменить."
+          }
+        }
+      }
+    },
+    "Threads" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нитки"
           }
         }
       }
@@ -1550,7 +1762,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Просмотр и выбор петли"
+            "value" : "Просмотр и выбор символа"
           }
         }
       }
@@ -1561,6 +1773,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Где остановилась, что изменить, идеи…"
+          }
+        }
+      }
+    },
+    "Width (cross count)" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ширина (кол-во крестиков)"
+          }
+        }
+      }
+    },
+    "Width (crosses)" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ширина (крестики)"
           }
         }
       }
@@ -1641,6 +1873,86 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Уменьшить"
+          }
+        }
+      }
+    },
+    "¼ cross, bottom left" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¼ креста, слева снизу"
+          }
+        }
+      }
+    },
+    "¼ cross, bottom right" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¼ креста, справа снизу"
+          }
+        }
+      }
+    },
+    "¼ cross, top left" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¼ креста, слева сверху"
+          }
+        }
+      }
+    },
+    "¼ cross, top right" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¼ креста, справа сверху"
+          }
+        }
+      }
+    },
+    "¾ cross, bottom left" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¾ креста, слева снизу"
+          }
+        }
+      }
+    },
+    "¾ cross, bottom right" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¾ креста, справа снизу"
+          }
+        }
+      }
+    },
+    "¾ cross, top left" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¾ креста, слева сверху"
+          }
+        }
+      }
+    },
+    "¾ cross, top right" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¾ креста, справа сверху"
           }
         }
       }

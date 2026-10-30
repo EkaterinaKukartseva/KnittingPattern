@@ -1,6 +1,6 @@
 //
 //  ChartLayoutTests.swift
-//  KnittingPatternTests
+//  ThreadfolioTests
 //
 //  Created by Ekaterina on 28.10.2026.
 //
@@ -8,7 +8,7 @@
 import CoreGraphics
 import Foundation
 import Testing
-@testable import KnittingPattern
+@testable import Threadfolio
 
 @MainActor
 struct ChartLayoutTests {

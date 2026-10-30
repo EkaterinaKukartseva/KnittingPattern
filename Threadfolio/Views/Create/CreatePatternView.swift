@@ -1,6 +1,6 @@
 //
 //  CreatePatternView.swift
-//  KnittingPattern
+//  Threadfolio
 //
 //  Created by Ekaterina on 27.10.2026.
 //
@@ -63,7 +63,7 @@ struct CreatePatternView: View {
                     ForEach(Craft.allCases) { craft in
                         SelectableCard(isSelected: draft.craft == craft, action: { draft.craft = craft }) {
                             VStack(spacing: 12) {
-                                Image(systemName: craft == .crochet ? "line.diagonal" : "pause")
+                                Image(systemName: craft.icon)
                                     .font(.system(size: 34, weight: .light))
                                     .foregroundStyle(.accentDark)
                                 Text(craft.title)

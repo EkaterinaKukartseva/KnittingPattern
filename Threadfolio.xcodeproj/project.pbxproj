@@ -12,37 +12,37 @@
 			containerPortal = C4CC98C1308F7D6100AA06FF /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = C4CC98C8308F7D6100AA06FF;
-			remoteInfo = KnittingPattern;
+			remoteInfo = Threadfolio;
 		};
 		C4CC98E3308F7D6200AA06FF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C4CC98C1308F7D6100AA06FF /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = C4CC98C8308F7D6100AA06FF;
-			remoteInfo = KnittingPattern;
+			remoteInfo = Threadfolio;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		C4CC98C9308F7D6100AA06FF /* KnittingPattern.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KnittingPattern.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C4CC98D8308F7D6200AA06FF /* KnittingPatternTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KnittingPatternTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C4CC98E2308F7D6200AA06FF /* KnittingPatternUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KnittingPatternUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C4CC98C9308F7D6100AA06FF /* Threadfolio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Threadfolio.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C4CC98D8308F7D6200AA06FF /* ThreadfolioTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ThreadfolioTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C4CC98E2308F7D6200AA06FF /* ThreadfolioUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ThreadfolioUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		C4CC98CB308F7D6100AA06FF /* KnittingPattern */ = {
+		C4CC98CB308F7D6100AA06FF /* Threadfolio */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = KnittingPattern;
+			path = Threadfolio;
 			sourceTree = "<group>";
 		};
-		C4CC98DB308F7D6200AA06FF /* KnittingPatternTests */ = {
+		C4CC98DB308F7D6200AA06FF /* ThreadfolioTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = KnittingPatternTests;
+			path = ThreadfolioTests;
 			sourceTree = "<group>";
 		};
-		C4CC98E5308F7D6200AA06FF /* KnittingPatternUITests */ = {
+		C4CC98E5308F7D6200AA06FF /* ThreadfolioUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = KnittingPatternUITests;
+			path = ThreadfolioUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -69,9 +69,9 @@
 		C4CC98C0308F7D6100AA06FF = {
 			isa = PBXGroup;
 			children = (
-				C4CC98CB308F7D6100AA06FF /* KnittingPattern */,
-				C4CC98DB308F7D6200AA06FF /* KnittingPatternTests */,
-				C4CC98E5308F7D6200AA06FF /* KnittingPatternUITests */,
+				C4CC98CB308F7D6100AA06FF /* Threadfolio */,
+				C4CC98DB308F7D6200AA06FF /* ThreadfolioTests */,
+				C4CC98E5308F7D6200AA06FF /* ThreadfolioUITests */,
 				C4CC98CA308F7D6100AA06FF /* Products */,
 			);
 			sourceTree = "<group>";
@@ -79,9 +79,9 @@
 		C4CC98CA308F7D6100AA06FF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C4CC98C9308F7D6100AA06FF /* KnittingPattern.app */,
-				C4CC98D8308F7D6200AA06FF /* KnittingPatternTests.xctest */,
-				C4CC98E2308F7D6200AA06FF /* KnittingPatternUITests.xctest */,
+				C4CC98C9308F7D6100AA06FF /* Threadfolio.app */,
+				C4CC98D8308F7D6200AA06FF /* ThreadfolioTests.xctest */,
+				C4CC98E2308F7D6200AA06FF /* ThreadfolioUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -89,9 +89,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C4CC98C8308F7D6100AA06FF /* KnittingPattern */ = {
+		C4CC98C8308F7D6100AA06FF /* Threadfolio */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C4CC98EA308F7D6200AA06FF /* Build configuration list for PBXNativeTarget "KnittingPattern" */;
+			buildConfigurationList = C4CC98EA308F7D6200AA06FF /* Build configuration list for PBXNativeTarget "Threadfolio" */;
 			buildPhases = (
 				C4CC98C5308F7D6100AA06FF /* Sources */,
 				C4CC98C6308F7D6100AA06FF /* Frameworks */,
@@ -103,16 +103,16 @@
 				C4CC9902308F7D6300AA06FF /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				C4CC98CB308F7D6100AA06FF /* KnittingPattern */,
+				C4CC98CB308F7D6100AA06FF /* Threadfolio */,
 			);
-			name = KnittingPattern;
-			productName = KnittingPattern;
-			productReference = C4CC98C9308F7D6100AA06FF /* KnittingPattern.app */;
+			name = Threadfolio;
+			productName = Threadfolio;
+			productReference = C4CC98C9308F7D6100AA06FF /* Threadfolio.app */;
 			productType = "com.apple.product-type.application";
 		};
-		C4CC98D7308F7D6200AA06FF /* KnittingPatternTests */ = {
+		C4CC98D7308F7D6200AA06FF /* ThreadfolioTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C4CC98ED308F7D6200AA06FF /* Build configuration list for PBXNativeTarget "KnittingPatternTests" */;
+			buildConfigurationList = C4CC98ED308F7D6200AA06FF /* Build configuration list for PBXNativeTarget "ThreadfolioTests" */;
 			buildPhases = (
 				C4CC98D4308F7D6200AA06FF /* Sources */,
 				C4CC98D5308F7D6200AA06FF /* Frameworks */,
@@ -124,16 +124,16 @@
 				C4CC98DA308F7D6200AA06FF /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				C4CC98DB308F7D6200AA06FF /* KnittingPatternTests */,
+				C4CC98DB308F7D6200AA06FF /* ThreadfolioTests */,
 			);
-			name = KnittingPatternTests;
-			productName = KnittingPatternTests;
-			productReference = C4CC98D8308F7D6200AA06FF /* KnittingPatternTests.xctest */;
+			name = ThreadfolioTests;
+			productName = ThreadfolioTests;
+			productReference = C4CC98D8308F7D6200AA06FF /* ThreadfolioTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		C4CC98E1308F7D6200AA06FF /* KnittingPatternUITests */ = {
+		C4CC98E1308F7D6200AA06FF /* ThreadfolioUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C4CC98F0308F7D6200AA06FF /* Build configuration list for PBXNativeTarget "KnittingPatternUITests" */;
+			buildConfigurationList = C4CC98F0308F7D6200AA06FF /* Build configuration list for PBXNativeTarget "ThreadfolioUITests" */;
 			buildPhases = (
 				C4CC98DE308F7D6200AA06FF /* Sources */,
 				C4CC98DF308F7D6200AA06FF /* Frameworks */,
@@ -145,11 +145,11 @@
 				C4CC98E4308F7D6200AA06FF /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				C4CC98E5308F7D6200AA06FF /* KnittingPatternUITests */,
+				C4CC98E5308F7D6200AA06FF /* ThreadfolioUITests */,
 			);
-			name = KnittingPatternUITests;
-			productName = KnittingPatternUITests;
-			productReference = C4CC98E2308F7D6200AA06FF /* KnittingPatternUITests.xctest */;
+			name = ThreadfolioUITests;
+			productName = ThreadfolioUITests;
+			productReference = C4CC98E2308F7D6200AA06FF /* ThreadfolioUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -175,7 +175,7 @@
 					};
 				};
 			};
-			buildConfigurationList = C4CC98C4308F7D6100AA06FF /* Build configuration list for PBXProject "KnittingPattern" */;
+			buildConfigurationList = C4CC98C4308F7D6100AA06FF /* Build configuration list for PBXProject "Threadfolio" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -193,9 +193,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C4CC98C8308F7D6100AA06FF /* KnittingPattern */,
-				C4CC98D7308F7D6200AA06FF /* KnittingPatternTests */,
-				C4CC98E1308F7D6200AA06FF /* KnittingPatternUITests */,
+				C4CC98C8308F7D6100AA06FF /* Threadfolio */,
+				C4CC98D7308F7D6200AA06FF /* ThreadfolioTests */,
+				C4CC98E1308F7D6200AA06FF /* ThreadfolioUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -239,12 +239,12 @@
 /* Begin PBXTargetDependency section */
 		C4CC98DA308F7D6200AA06FF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = C4CC98C8308F7D6100AA06FF /* KnittingPattern */;
+			target = C4CC98C8308F7D6100AA06FF /* Threadfolio */;
 			targetProxy = C4CC98D9308F7D6200AA06FF /* PBXContainerItemProxy */;
 		};
 		C4CC98E4308F7D6200AA06FF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = C4CC98C8308F7D6100AA06FF /* KnittingPattern */;
+			target = C4CC98C8308F7D6100AA06FF /* Threadfolio */;
 			targetProxy = C4CC98E3308F7D6200AA06FF /* PBXContainerItemProxy */;
 		};
 		C4CC9902308F7D6300AA06FF /* PBXTargetDependency */ = {
@@ -254,7 +254,7 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		C4CC98E8308F7D6200AA06FF /* Debug configuration for PBXProject "KnittingPattern" */ = {
+		C4CC98E8308F7D6200AA06FF /* Debug configuration for PBXProject "Threadfolio" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -317,7 +317,7 @@
 			};
 			name = Debug;
 		};
-		C4CC98E9308F7D6200AA06FF /* Release configuration for PBXProject "KnittingPattern" */ = {
+		C4CC98E9308F7D6200AA06FF /* Release configuration for PBXProject "Threadfolio" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -372,7 +372,7 @@
 			};
 			name = Release;
 		};
-		C4CC98EB308F7D6200AA06FF /* Debug configuration for PBXNativeTarget "KnittingPattern" */ = {
+		C4CC98EB308F7D6200AA06FF /* Debug configuration for PBXNativeTarget "Threadfolio" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -412,7 +412,7 @@
 			};
 			name = Debug;
 		};
-		C4CC98EC308F7D6200AA06FF /* Release configuration for PBXNativeTarget "KnittingPattern" */ = {
+		C4CC98EC308F7D6200AA06FF /* Release configuration for PBXNativeTarget "Threadfolio" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -452,7 +452,7 @@
 			};
 			name = Release;
 		};
-		C4CC98EE308F7D6200AA06FF /* Debug configuration for PBXNativeTarget "KnittingPatternTests" */ = {
+		C4CC98EE308F7D6200AA06FF /* Debug configuration for PBXNativeTarget "ThreadfolioTests" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -472,11 +472,11 @@
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KnittingPattern.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/KnittingPattern";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Threadfolio.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Threadfolio";
 			};
 			name = Debug;
 		};
-		C4CC98EF308F7D6200AA06FF /* Release configuration for PBXNativeTarget "KnittingPatternTests" */ = {
+		C4CC98EF308F7D6200AA06FF /* Release configuration for PBXNativeTarget "ThreadfolioTests" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -496,11 +496,11 @@
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KnittingPattern.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/KnittingPattern";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Threadfolio.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Threadfolio";
 			};
 			name = Release;
 		};
-		C4CC98F1308F7D6200AA06FF /* Debug configuration for PBXNativeTarget "KnittingPatternUITests" */ = {
+		C4CC98F1308F7D6200AA06FF /* Debug configuration for PBXNativeTarget "ThreadfolioUITests" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -519,11 +519,11 @@
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = KnittingPattern;
+				TEST_TARGET_NAME = Threadfolio;
 			};
 			name = Debug;
 		};
-		C4CC98F2308F7D6200AA06FF /* Release configuration for PBXNativeTarget "KnittingPatternUITests" */ = {
+		C4CC98F2308F7D6200AA06FF /* Release configuration for PBXNativeTarget "ThreadfolioUITests" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -542,42 +542,42 @@
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = KnittingPattern;
+				TEST_TARGET_NAME = Threadfolio;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C4CC98C4308F7D6100AA06FF /* Build configuration list for PBXProject "KnittingPattern" */ = {
+		C4CC98C4308F7D6100AA06FF /* Build configuration list for PBXProject "Threadfolio" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C4CC98E8308F7D6200AA06FF /* Debug configuration for PBXProject "KnittingPattern" */,
-				C4CC98E9308F7D6200AA06FF /* Release configuration for PBXProject "KnittingPattern" */,
+				C4CC98E8308F7D6200AA06FF /* Debug configuration for PBXProject "Threadfolio" */,
+				C4CC98E9308F7D6200AA06FF /* Release configuration for PBXProject "Threadfolio" */,
 			);
 			defaultConfigurationName = Release;
 		};
-		C4CC98EA308F7D6200AA06FF /* Build configuration list for PBXNativeTarget "KnittingPattern" */ = {
+		C4CC98EA308F7D6200AA06FF /* Build configuration list for PBXNativeTarget "Threadfolio" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C4CC98EB308F7D6200AA06FF /* Debug configuration for PBXNativeTarget "KnittingPattern" */,
-				C4CC98EC308F7D6200AA06FF /* Release configuration for PBXNativeTarget "KnittingPattern" */,
+				C4CC98EB308F7D6200AA06FF /* Debug configuration for PBXNativeTarget "Threadfolio" */,
+				C4CC98EC308F7D6200AA06FF /* Release configuration for PBXNativeTarget "Threadfolio" */,
 			);
 			defaultConfigurationName = Release;
 		};
-		C4CC98ED308F7D6200AA06FF /* Build configuration list for PBXNativeTarget "KnittingPatternTests" */ = {
+		C4CC98ED308F7D6200AA06FF /* Build configuration list for PBXNativeTarget "ThreadfolioTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C4CC98EE308F7D6200AA06FF /* Debug configuration for PBXNativeTarget "KnittingPatternTests" */,
-				C4CC98EF308F7D6200AA06FF /* Release configuration for PBXNativeTarget "KnittingPatternTests" */,
+				C4CC98EE308F7D6200AA06FF /* Debug configuration for PBXNativeTarget "ThreadfolioTests" */,
+				C4CC98EF308F7D6200AA06FF /* Release configuration for PBXNativeTarget "ThreadfolioTests" */,
 			);
 			defaultConfigurationName = Release;
 		};
-		C4CC98F0308F7D6200AA06FF /* Build configuration list for PBXNativeTarget "KnittingPatternUITests" */ = {
+		C4CC98F0308F7D6200AA06FF /* Build configuration list for PBXNativeTarget "ThreadfolioUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C4CC98F1308F7D6200AA06FF /* Debug configuration for PBXNativeTarget "KnittingPatternUITests" */,
-				C4CC98F2308F7D6200AA06FF /* Release configuration for PBXNativeTarget "KnittingPatternUITests" */,
+				C4CC98F1308F7D6200AA06FF /* Debug configuration for PBXNativeTarget "ThreadfolioUITests" */,
+				C4CC98F2308F7D6200AA06FF /* Release configuration for PBXNativeTarget "ThreadfolioUITests" */,
 			);
 			defaultConfigurationName = Release;
 		};

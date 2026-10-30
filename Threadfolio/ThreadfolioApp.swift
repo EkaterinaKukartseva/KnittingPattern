@@ -1,6 +1,6 @@
 //
-//  KnittingPatternApp.swift
-//  KnittingPattern
+//  ThreadfolioApp.swift
+//  Threadfolio
 //
 //  Created by Ekaterina on 26.10.2026.
 //
@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftData
 
 @main
-struct KnittingPatternApp: App {
+struct ThreadfolioApp: App {
     
     @AppStorage(AppTheme.storageKey) private var theme: AppTheme = .system
 

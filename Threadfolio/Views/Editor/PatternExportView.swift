@@ -1,6 +1,6 @@
 //
 //  PatternExportView.swift
-//  KnittingPattern
+//  Threadfolio
 //
 //  Created by Ekaterina on 26.10.2026.
 //
@@ -18,7 +18,9 @@ struct PatternExportView: View {
         VStack(alignment: .leading, spacing: 16) {
             VStack(alignment: .leading, spacing: 4) {
                 Text(pattern.name).font(.system(.title, design: .serif))
-                Text("\(pattern.craft.title) · \(pattern.columns) stitches × \(pattern.rows) rows")
+                Text(pattern.craft == .crossStitch
+                     ? "\(pattern.craft.title) · \(pattern.columns)×\(pattern.rows)"
+                     : "\(pattern.craft.title) · \(pattern.columns) stitches × \(pattern.rows) rows")
                     .font(.subheadline)
                     .foregroundStyle(Color.secondaryText)
                 if !pattern.summary.isEmpty {
@@ -40,6 +42,16 @@ struct PatternExportView: View {
                             Text(stitch.name).font(.callout)
                         }
                     }
+                }
+            }
+            if pattern.craft == .crossStitch {
+                let threads = ThreadUsage.count(in: pattern.cells)
+                if !threads.isEmpty {
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("Threads").font(.headline)
+                        ForEach(threads) { ThreadRow(thread: $0) }
+                    }
+                    .font(.callout)
                 }
             }
         }

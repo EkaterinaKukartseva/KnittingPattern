@@ -1,6 +1,6 @@
 //
 //  SampleData.swift
-//  KnittingPattern
+//  Threadfolio
 //
 //  Created by Ekaterina on 26.10.2026.
 //
@@ -28,14 +28,15 @@ enum SampleData {
     /// Схема из `previewContainer` — для превью экранов одной схемы.
     static var previewPattern: Pattern {
         let descriptor = FetchDescriptor<Pattern>(sortBy: [SortDescriptor(\.name)])
-        return (try? previewContainer.mainContext.fetch(descriptor).first) ?? heart()
+        let patterns = (try? previewContainer.mainContext.fetch(descriptor)) ?? []
+        return patterns.first { $0.craft == .crochet } ?? heart()
     }
 
     static func samples() -> [Pattern] {
         let favorite = heart(name: "Little Heart (favorite)")
         favorite.isFavorite = true
         favorite.notes = "Stopped at row 12"
-        return [heart(), knitStripes(), favorite]
+        return [heart(), knitStripes(), favorite, crossStitchFlower()]
     }
 
     static func seedIfRequested(in context: ModelContext) {
@@ -78,6 +79,38 @@ enum SampleData {
         }
         return Pattern(name: "Striped Rib", craft: .knitting, columns: columns, rows: rows,
                        cells: cells)
+    }
+
+    /// Цветок для вышивки: лепестки, стебель и узелок в середине.
+    static func crossStitchFlower() -> Pattern {
+        let rows = [
+            "...PPP.PPP...",
+            "..PPPPPPPPP..",
+            "..PPPPOPPPP..",
+            "...PPPPPPP...",
+            "....PPPPP....",
+            "......G......",
+            "..GG..G..GG..",
+            "...GG.G.GG...",
+            ".....GGG.....",
+            "......G......",
+        ]
+        let columns = 13, height = 12
+        var cells = Array(repeating: Cell.empty, count: columns * height)
+        for (r, line) in rows.enumerated() {
+            for (c, char) in line.enumerated() {
+                let index = (r + 1) * columns + c
+                switch char {
+                case "P": cells[index] = Cell(symbol: .fullCross, color: .palette(.pink))
+                case "G": cells[index] = Cell(symbol: .fullCross, color: .palette(.green))
+                case "O": cells[index] = Cell(symbol: .frenchKnot, color: .palette(.beige))
+                default: break
+                }
+            }
+        }
+        let pattern = Pattern(name: "Flower", craft: .crossStitch, columns: columns, rows: height, cells: cells)
+        pattern.summary = "Aida 14, DMC floss"
+        return pattern
     }
 }
 #endif

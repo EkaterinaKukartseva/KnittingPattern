@@ -1,10 +1,10 @@
-# Правила SwiftLint для KnittingPattern.
+# Правила SwiftLint для Threadfolio.
 # Запускается при каждой сборке через SwiftLintBuildToolPlugin.
 
 included:
-  - KnittingPattern
-  - KnittingPatternTests
-  - KnittingPatternUITests
+  - Threadfolio
+  - ThreadfolioTests
+  - ThreadfolioUITests
 
 disabled_rules:
   # Висячие запятые удобны в многострочных литералах: меньше шума в диффах.

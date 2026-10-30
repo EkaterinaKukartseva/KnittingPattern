@@ -1,6 +1,6 @@
 //
 //  ProfileView.swift
-//  KnittingPattern
+//  Threadfolio
 //
 //  Created by Ekaterina on 26.10.2026.
 //
@@ -26,8 +26,9 @@ struct ProfileView: View {
             }
             Section("My Charts") {
                 statRow("Total", patterns.count, icon: "square.grid.2x2")
-                statRow("Crochet", patterns.filter { $0.craft == .crochet }.count, icon: "line.diagonal")
-                statRow("Knitting", patterns.filter { $0.craft == .knitting }.count, icon: "pause")
+                statRow("Crochet", patterns.filter { $0.craft == .crochet }.count, icon: Craft.crochet.icon)
+                statRow("Knitting", patterns.filter { $0.craft == .knitting }.count, icon: Craft.knitting.icon)
+                statRow("Cross-stitch", patterns.filter { $0.craft == .crossStitch }.count, icon: Craft.crossStitch.icon)
                 statRow("Favorites", patterns.filter(\.isFavorite).count, icon: "heart")
             }
             Section {

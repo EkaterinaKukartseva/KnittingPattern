@@ -1,6 +1,6 @@
 //
 //  CellColor.swift
-//  KnittingPattern
+//  Threadfolio
 //
 //  Created by Ekaterina on 26.10.2026.
 //
@@ -22,6 +22,18 @@ nonisolated enum PaletteColor: String, CaseIterable, Codable {
         case .beige: .paletteBeige
         }
     }
+
+    /// Название цвета для легенды ниток.
+    var title: String {
+        switch self {
+        case .ink: String(localized: "Black")
+        case .gray: String(localized: "Gray")
+        case .blue: String(localized: "Blue")
+        case .pink: String(localized: "Pink")
+        case .green: String(localized: "Green")
+        case .beige: String(localized: "Beige")
+        }
+    }
 }
 
 /// Цвет символа или фона клетки: цвет палитры (по имени из Assets)
@@ -37,6 +49,13 @@ nonisolated enum CellColor: Hashable, Codable {
         switch self {
         case .palette(let palette): palette.color
         case .custom(let resolved): Color(resolved)
+        }
+    }
+
+    var title: String {
+        switch self {
+        case .palette(let palette): palette.title
+        case .custom: String(localized: "Custom color")
         }
     }
 
