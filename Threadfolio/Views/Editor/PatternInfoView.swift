@@ -74,9 +74,15 @@ struct PatternInfoView: View {
                     }
                 }
 
-                if pattern.craft == .crossStitch, !threads.isEmpty {
+                if !threads.isEmpty {
                     Section("Threads") {
                         ForEach(threads) { ThreadRow(thread: $0) }
+                    }
+                }
+
+                if !otherColors.isEmpty {
+                    Section("Colors") {
+                        ColorSwatches(colors: otherColors)
                     }
                 }
 
@@ -122,9 +128,8 @@ struct PatternInfoView: View {
         }
     }
 
-    private var threads: [ThreadUsage] {
-        ThreadUsage.count(in: pattern.cells)
-    }
+    private var threads: [ThreadUsage] { ThreadUsage.threads(of: pattern) }
+    private var otherColors: [CellColor] { ThreadUsage.otherColors(of: pattern) }
 
     private var shareText: String {
         [pattern.name, pattern.summary].filter { !$0.isEmpty }.joined(separator: "\n")

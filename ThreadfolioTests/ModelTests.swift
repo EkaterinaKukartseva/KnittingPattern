@@ -60,10 +60,40 @@ struct ThreadUsageTests {
         #expect(threads == [ThreadUsage(color: .default, count: 1)])
     }
 
+    @Test func colorsIncludeSymbolsAndFills() {
+        let cells = [
+            Cell(symbol: .chain, color: .palette(.blue)),
+            Cell(symbol: .chain, color: .palette(.blue), background: .palette(.green)),
+            Cell.empty,
+        ]
+        #expect(ThreadUsage.colors(in: cells) == [.palette(.blue), .palette(.green)])
+    }
+
     @Test func customColorsGoAfterPaletteOnTie() {
         let custom = CellColor.custom(Color.Resolved(red: 0.5, green: 0.2, blue: 0.9))
         let cells = [Cell(symbol: .fullCross, color: custom), Cell(symbol: .fullCross, color: .palette(.beige))]
         #expect(ThreadUsage.count(in: cells).map(\.color) == [.palette(.beige), custom])
+    }
+}
+
+@MainActor
+struct ChartColorsTests {
+
+    private let cells = [
+        Cell(symbol: .chain, color: .palette(.blue)),
+        Cell(background: .palette(.green)),
+    ]
+
+    @Test func crochetChartListsColorsWithoutThreads() {
+        let pattern = Pattern(name: "Test", craft: .crochet, columns: 2, rows: 1, cells: cells)
+        #expect(ThreadUsage.threads(of: pattern).isEmpty)
+        #expect(ThreadUsage.otherColors(of: pattern) == [.palette(.blue), .palette(.green)])
+    }
+
+    @Test func crossStitchListsFillsSeparatelyFromThreads() {
+        let pattern = Pattern(name: "Test", craft: .crossStitch, columns: 2, rows: 1, cells: cells)
+        #expect(ThreadUsage.threads(of: pattern).map(\.color) == [.palette(.blue)])
+        #expect(ThreadUsage.otherColors(of: pattern) == [.palette(.green)])
     }
 }
 

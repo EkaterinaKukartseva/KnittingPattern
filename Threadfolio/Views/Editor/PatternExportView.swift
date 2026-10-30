@@ -32,27 +32,17 @@ struct PatternExportView: View {
                 image: pattern.showImage ? ImageSupport.image(from: pattern.imageData) : nil,
                 imageOpacity: pattern.imageOpacity
             )
-            if !usedStitches.isEmpty {
-                LazyVGrid(columns: [GridItem(.adaptive(minimum: 200), alignment: .leading)], alignment: .leading, spacing: 8) {
-                    ForEach(usedStitches) { stitch in
-                        HStack(spacing: 8) {
-                            StitchGlyph(stitch: stitch)
-                                .frame(width: 22, height: 22)
-                                .overlay { Rectangle().strokeBorder(Color.gridLine) }
-                            Text(stitch.name).font(.callout)
-                        }
+            // Легенда в один столбец: сначала символы, под ними цвета.
+            VStack(alignment: .leading, spacing: 8) {
+                ForEach(usedStitches) { stitch in
+                    HStack(spacing: 8) {
+                        StitchGlyph(stitch: stitch)
+                            .frame(width: 22, height: 22)
+                            .overlay { Rectangle().strokeBorder(Color.gridLine) }
+                        Text(stitch.name).font(.callout)
                     }
                 }
-            }
-            if pattern.craft == .crossStitch {
-                let threads = ThreadUsage.count(in: pattern.cells)
-                if !threads.isEmpty {
-                    VStack(alignment: .leading, spacing: 8) {
-                        Text("Threads").font(.headline)
-                        ForEach(threads) { ThreadRow(thread: $0) }
-                    }
-                    .font(.callout)
-                }
+                ForEach(ThreadUsage.colors(in: pattern.cells), id: \.self) { ColorSwatch(color: $0) }
             }
         }
         .foregroundStyle(Color.ink)

@@ -297,16 +297,6 @@
         }
       }
     },
-    "Beige" : {
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Бежевый"
-          }
-        }
-      }
-    },
     "Bind off" : {
       "localizations" : {
         "ru" : {
@@ -317,32 +307,12 @@
         }
       }
     },
-    "Black" : {
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Чёрный"
-          }
-        }
-      }
-    },
     "Blank Grid" : {
       "localizations" : {
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Пустая таблица"
-          }
-        }
-      }
-    },
-    "Blue" : {
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Синий"
           }
         }
       }
@@ -537,6 +507,16 @@
         }
       }
     },
+    "Colors" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Цвета"
+          }
+        }
+      }
+    },
     "Column numbers" : {
       "localizations" : {
         "ru" : {
@@ -653,16 +633,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Вышивка"
-          }
-        }
-      }
-    },
-    "Custom color" : {
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Свой цвет"
           }
         }
       }
@@ -923,26 +893,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Полный крест"
-          }
-        }
-      }
-    },
-    "Gray" : {
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Серый"
-          }
-        }
-      }
-    },
-    "Green" : {
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Зелёный"
           }
         }
       }
@@ -1243,16 +1193,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Пико"
-          }
-        }
-      }
-    },
-    "Pink" : {
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Розовый"
           }
         }
       }

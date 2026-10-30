@@ -22,7 +22,32 @@ nonisolated struct ThreadUsage: Identifiable, Equatable {
         for cell in cells where cell.symbol != nil {
             counts[cell.color ?? .default, default: 0] += 1
         }
-        return counts
+        return ranked(counts)
+    }
+
+    /// Все цвета схемы — и значков, и заливки клеток, от самого частого к редкому.
+    static func colors(in cells: [Cell]) -> [CellColor] {
+        var counts: [CellColor: Int] = [:]
+        for cell in cells {
+            if cell.symbol != nil { counts[cell.color ?? .default, default: 0] += 1 }
+            if let background = cell.background { counts[background, default: 0] += 1 }
+        }
+        return ranked(counts).map(\.color)
+    }
+
+    /// Легенда ниток: есть только у вышивки.
+    static func threads(of pattern: Pattern) -> [Self] {
+        pattern.craft == .crossStitch ? count(in: pattern.cells) : []
+    }
+
+    /// Цвета схемы, которых нет в легенде ниток.
+    static func otherColors(of pattern: Pattern) -> [CellColor] {
+        let threadColors = threads(of: pattern).map(\.color)
+        return colors(in: pattern.cells).filter { !threadColors.contains($0) }
+    }
+
+    private static func ranked(_ counts: [CellColor: Int]) -> [Self] {
+        counts
             .map { Self(color: $0.key, count: $0.value) }
             .sorted { lhs, rhs in
                 lhs.count != rhs.count

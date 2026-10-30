@@ -7,23 +7,42 @@
 
 import SwiftUI
 
-/// Строка легенды ниток: образец цвета, название и число стежков.
+/// Образец цвета в легенде.
+struct ColorSwatch: View {
+
+    let color: CellColor
+
+    var body: some View {
+        Circle()
+            .fill(color.color)
+            .frame(width: 22, height: 22)
+            .overlay { Circle().strokeBorder(Color.cardBorder) }
+    }
+}
+
+/// Строка легенды ниток: образец цвета и число стежков.
 struct ThreadRow: View {
 
     let thread: ThreadUsage
 
     var body: some View {
         HStack(spacing: 12) {
-            Circle()
-                .fill(thread.color.color)
-                .frame(width: 22, height: 22)
-                .overlay { Circle().strokeBorder(Color.cardBorder) }
-            Text(thread.color.title)
-                .foregroundStyle(Color.ink)
-            Spacer()
+            ColorSwatch(color: thread.color)
             Text("\(thread.count) stitches")
-                .foregroundStyle(Color.secondaryText)
+                .foregroundStyle(Color.ink)
                 .monospacedDigit()
+        }
+    }
+}
+
+/// Образцы цветов схемы в один поток, с переносом на новую строку.
+struct ColorSwatches: View {
+
+    let colors: [CellColor]
+
+    var body: some View {
+        LazyVGrid(columns: [GridItem(.adaptive(minimum: 22), spacing: 10)], alignment: .leading, spacing: 10) {
+            ForEach(colors, id: \.self) { ColorSwatch(color: $0) }
         }
     }
 }
@@ -33,7 +52,7 @@ struct ThreadRow: View {
     List {
         ThreadRow(thread: ThreadUsage(color: .palette(.pink), count: 124))
         ThreadRow(thread: ThreadUsage(color: .palette(.green), count: 21))
-        ThreadRow(thread: ThreadUsage(color: .custom(.init(red: 0.6, green: 0.3, blue: 0.8)), count: 1))
+        ColorSwatches(colors: [.palette(.blue), .palette(.beige), .custom(.init(red: 0.6, green: 0.3, blue: 0.8))])
     }
 }
 #endif
